@@ -8,10 +8,10 @@ class Dbh {
 	private $charset;
 
 	protected function connect() {
-		$this->servername = "localhost";	
+		$this->servername = "162.246.156.189";	
 		$this->username = "root";
-		$this->password = "";
-		$this->dbname = "";
+		$this->password = "cpsc471";
+		$this->dbname = "sys";
 		$this->charset = "utf8mb4";
 		try {
 		$dsn = "mysql:host=".$this->servername.";dbname=".$this->dbname.";charset=".$this->charset;
