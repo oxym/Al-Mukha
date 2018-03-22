@@ -1,4 +1,5 @@
 <?php
+require('product.inc.php');
 
 class ViewProduct extends Product {
 	public function showProductByPartialName($pname) {

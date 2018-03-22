@@ -1,7 +1,8 @@
 <?php
-class Search extends ViewProduct
+require_once('viewproduct.inc.php');
+class Search extends ViewProduct {
 	private $pname;
-	private $searchType
+	private $searchType;
 
 
 	public function  __construct($pname, $searchType) {
@@ -9,7 +10,7 @@ class Search extends ViewProduct
 		$this->searchType = $searchType;
 	}
 
-	public function searchByPartial() {
+	public function searchByPartialName() {
 		$result = "";
 		switch($this->searchType) {
 			case 'product':
@@ -25,6 +26,7 @@ class Search extends ViewProduct
 				$result = "Error";
 				break;
 		}
-		return $result
+		return $result;
 	}
 
+}
