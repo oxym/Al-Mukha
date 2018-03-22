@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Login</title>
+	<title>Al-Mukha</title>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -18,16 +18,18 @@
 
 </head>
 <body>
+	<div class="registration-options">
+		<a href="customerRegistration.php">
+			Customer	
+		</a>
 
-	<form class="register-details" action="search.php" method="POST">
+		<a href="salespersonRegistration.php">
+			Salesperson
+		</a>
 
-		<input class="form-control mr-sm-2 mb-2 search-bar" name="email" type="email" placeholder="Email" aria-label="Email">
-		<input class="form-control mr-sm-2 mb-2 search-bar" name="confirmEmail" type="email" placeholder="Confirm Email" aria-label="Email">
-		<input class="form-control mr-sm-2 mb-4 search-bar" name="password" type="password" placeholder="Password" aria-label="Password">
-
-		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-
-	</form>
-
+		<a href="ownerRegistration.php">
+			Owner
+		</a>
+	</div>
 </body>
 </html>
