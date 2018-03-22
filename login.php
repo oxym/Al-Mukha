@@ -19,7 +19,7 @@
 </head>
 <body>
 
-	<form class="login-details" action="search.php" method="POST">
+	<form class="login-details" action="" method="POST">
 		<div class="mb-4">
 			Welcome To Al-Mukha
 		</div>

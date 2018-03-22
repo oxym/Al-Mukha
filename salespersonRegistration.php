@@ -19,7 +19,7 @@
 </head>
 <body>
 
-	<form class="customer-register-details" action="search.php" method="POST">
+	<form class="customer-register-details" action="" method="POST">
 		<div class="mb-4">
 			Salesperson Registration
 		</div>
