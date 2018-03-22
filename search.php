@@ -1,10 +1,9 @@
 <?php
-	include 'includes/dbh.inc.php';
-	include 'includes/product.inc.php';
-	include 'includes/viewproduct.inc.php';
+	include 'includes/search.inc.php';
 
 $pname = $_POST['pname'];
+$searchType = $_POST['type']
 
-$vp = New ViewProduct;
-$vp->showProductByPartialName($pname);
-unset($vp);
+$search = New Search($pname,$searchType);
+$msg = $search->searchByPartialName();
+echo $msg;
