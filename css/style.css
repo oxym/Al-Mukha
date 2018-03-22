@@ -5,3 +5,13 @@
 .search-bar {
 	   width: 20rem !important;
 }
+
+.login-button {
+	position: absolute;
+    right: 0;
+}
+
+.register-button {
+	position: absolute;
+    right: 3rem;
+}
