@@ -15,3 +15,18 @@
 	position: absolute;
     right: 3rem;
 }
+
+.main-page-content {
+	padding: 2rem 15rem;
+}
+
+.card {
+	padding: 1rem 1.3rem !important;
+}
+
+.card-title {
+	display: inline-block;
+}
+.card-title > div {
+	display: inline-block;	
+}

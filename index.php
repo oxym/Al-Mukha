@@ -49,5 +49,63 @@
 
 		</div>
 	</nav>
+
+	<div class="main-page-content">
+		<div class="card">
+			<div class="card-title">
+				<div id="productTitle">Product Title</div>
+				<div id="productPrice" class="col-md-4">$14.00</div>
+			</div>
+			<div class="row productInfo">
+				<div class="col-md-6">
+					<div>General Information</div>
+
+					<div class="col-md-4">
+						<div>Stock</div>
+						<div id="productStock">4</div>
+					</div>
+					
+					<div class="col-md-4">
+						<div>Origin</div>
+						<div id="productOrigin">Mexico</div>
+					</div>
+
+					<div class="col-md-4">
+						<div>Expiry date</div>
+						<div id="productExpiryDate">April 2019</div>
+					</div>
+
+					<div class="col-md-4">
+						<div>Shelve date</div>
+						<div id="productShelveDate">March 2019</div>
+					</div>
+
+				</div>
+
+				<div class="col-md-6">
+					<div>Specific Information</div>
+
+					<div class="col-md-4">
+						<div>Bean Type</div>
+						<div id="beanType">Good Bean</div>
+					</div>
+					
+					<div class="col-md-4">
+						<div>Roast Type</div>	
+						<div id="roastType">Best Roast</div>
+					</div>
+
+					<div class="col-md-4">
+						<div>Roast Date</div>
+						<div id="roastDate">March 2019</div>
+					</div>
+				</div>
+
+
+			</div>
+		</div>	
+	</div>
+
+
 </body>
 </html>
