@@ -24,9 +24,29 @@
 	padding: 1rem 1.3rem !important;
 }
 
+.product-detail-row {
+	position: relative;
+}
+
+.card-content {
+	padding-left: 1rem;
+}
+
+.product-detail-row-title {
+	float: left;
+}
+.product-detail-row-value {
+	float: right;
+	font-weight: bold;
+}
+
 .card-title {
 	display: inline-block;
 }
 .card-title > div {
 	display: inline-block;	
+}
+.card-title > div > div {
+	display: inline-block;		
+	font-weight: bold;
 }
