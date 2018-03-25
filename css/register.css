@@ -1,17 +1,3 @@
-a {
-	color: #007bff;
-    text-decoration: none;
-    background-color: transparent;
-    -webkit-text-decoration-skip: objects;
-    /* width: 10rem !important; */
-    width: 12rem;
-    display: inline-block;
-    padding: 1rem;
-    border: 1px solid black;
-    margin: 2rem;
-    text-decoration: none;
-}
-
 .customer-register-details {
     width: 30rem;
     margin: 3rem auto;
@@ -23,6 +9,19 @@ a {
 .registration-options {
 	text-align: center;
     margin-top: 10rem;
+}
+.registration-options a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+    /* width: 10rem !important; */
+    width: 12rem;
+    display: inline-block;
+    padding: 1rem;
+    border: 1px solid black;
+    margin: 2rem;
+    text-decoration: none;
 }
 
 .emails {
