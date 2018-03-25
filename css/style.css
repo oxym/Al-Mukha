@@ -10,6 +10,14 @@
 	position: absolute;
     right: 0;
 }
+.productManagementPageOwnerInfo {
+	position: absolute;
+    right: 4rem;
+}
+.logout-button {
+	position: absolute;
+    right: 0;	
+}
 
 .register-button {
 	position: absolute;
