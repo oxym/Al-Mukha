@@ -22,6 +22,7 @@
 
 .card {
 	padding: 1rem 1.3rem !important;
+	margin-bottom: 1rem;
 }
 
 .product-detail-row {
@@ -38,6 +39,7 @@
 .product-detail-row-value {
 	float: right;
 	font-weight: bold;
+	padding: 0 0.2rem;
 }
 
 .card-title {
@@ -49,4 +51,11 @@
 .card-title > div > div {
 	display: inline-block;		
 	font-weight: bold;
+}
+
+.product-save-delete {
+	position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 0 1rem 1rem 0;
 }

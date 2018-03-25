@@ -24,7 +24,7 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<div class="collapse navbar-collapse" id="navbarSupportedContent" action="search.php" method="POST">
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 
 				<li>
@@ -97,7 +97,7 @@
 						<div class="product-detail-row-title">Roast Type</div>
 						<div id="roastTypeVal" class="product-detail-row-value">Light</div>
 					</li>
-						<li id="teaType" class="list-group-item">
+					<li id="teaType" class="list-group-item">
 						<div class="product-detail-row-title">Tea Type</div>
 						<div id="teaTypeVal" class="product-detail-row-value">Green</div>
 					</li>
@@ -111,8 +111,7 @@
 					</li>
 				</ul>
 			</div>
-
-		</div>	
+		</div>
 	</div>
 
 
