@@ -23,6 +23,9 @@
 	position: absolute;
     right: 3rem;
 }
+.store-name {
+	font-size: 0.9em;
+}
 
 .main-page-content {
 	padding: 2rem 15rem;
@@ -66,4 +69,11 @@
     right: 0;
     bottom: 0;
     margin: 0 1rem 1rem 0;
+}
+
+.more-info-store-owner {
+	position: absolute;
+    right: 0;
+    bottom: 0;
+	margin: 0 1.2rem 1rem 0;	
 }
