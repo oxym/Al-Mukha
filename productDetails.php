@@ -5,6 +5,7 @@
 	<title>Al-Mukha</title>
 
 	<?php include('bootstrap.php'); ?>
+	
 	<!-- main page stylesheet -->
 	<link rel="stylesheet" href="./css/style.css">
 
@@ -12,14 +13,31 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="index.php">Al-Mukha Coffee & Tea</a>
+		<div id="storeName" class="store-name font-italic mr-3">
+			(Store Name)
+		</div>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="productManagementPageOwnerInfo mr-2">
-			Owner/Salesperson name
-		</div>
-		<div class="logout-button mr-2">
-			<a href="index.php">Logout</a>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+
+				<li>
+					<form class="form-inline my-2 my-lg-0" action="search.php" method="POST">
+						<input class="form-control mr-sm-2 search-bar" name="pname" type="text" placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+					</form>
+				</li>
+
+				<li class="register-button mr-2">
+					<a class="nav-link" href="register.php">Register |</a>
+				</li>
+				<li class="login-button mr-2">
+					<a class="nav-link" href="login.php">Login</a>
+				</li>
+			</ul>
+
 		</div>
 	</nav>
 
@@ -37,59 +55,61 @@
 				<ul class="list-group col-md-6">
 					<li class="list-group-item product-detail-row">
 						<div class="product-detail-row-title">Stock</div>
-						<input id="stockVal" class="product-detail-row-value text-right" value="123"></input>
+						<div id="stockVal" class="product-detail-row-value">123</div>
 					</li>
 					<li class="list-group-item">
 						<div class="product-detail-row-title">Origin</div>
-						<input id="originVal" class="product-detail-row-value text-right" value="Venezuela"></input>
+						<div id="originVal" class="product-detail-row-value">Venezuela</div>
 					</li>
 					<li class="list-group-item">
 						<div class="product-detail-row-title">Expiry Date</div>
-						<input id="expiryDateVal" class="product-detail-row-value text-right" value="May 9, 2018"></input>
+						<div id="expiryDateVal" class="product-detail-row-value">May 9, 2018</div>
 					</li>
 					<li class="list-group-item">
 						<div class="product-detail-row-title">Shelve Date</div>
-						<input id="shelveDateVal" class="product-detail-row-value text-right" value="April 9, 2018"></input>
+						<div id="shelveDateVal" class="product-detail-row-value">April 9, 2018</div>
 					</li>
 					<li class="list-group-item">
 						<div class="product-detail-row-title">Store Name</div>
-						<input id="storeName" class="product-detail-row-value text-right" value="Best Coffee Shop"></input>
+						<div id="storeName" class="product-detail-row-value">Best Coffee Shop</div>
 					</li>
 					<li class="list-group-item">
 						<div class="product-detail-row-title">Salesperson</div>
-						<input id="salesperson" class="product-detail-row-value text-right" value="John Doe"></input>
+						<div id="salesperson" class="product-detail-row-value">John Doe</div>
 					</li>
 				</ul>
 
 				<ul class="list-group col-md-6">
 					<li id="beanType" class="list-group-item">
 						<div class="product-detail-row-title">Bean Type</div>
-						<input id="beanTypeVal" class="product-detail-row-value text-right" value="Large"></input>
+						<div id="beanTypeVal" class="product-detail-row-value">Large</div>
 					</li>
 					<li id="roastType" class="list-group-item">
 						<div class="product-detail-row-title">Roast Type</div>
-						<input id="roastTypeVal" class="product-detail-row-value text-right" value="Light"></input>
+						<div id="roastTypeVal" class="product-detail-row-value">Light</div>
 					</li>
 					<li id="teaType" class="list-group-item">
 						<div class="product-detail-row-title">Tea Type</div>
-						<input id="teaTypeVal" class="product-detail-row-value text-right" value="Green"></input> 
+						<div id="teaTypeVal" class="product-detail-row-value">Green</div>
 					</li>
 					<li id="teaGrade" class="list-group-item">
 						<div class="product-detail-row-title">Tea Grade</div>
-						<input id="teaGradeVal" class="product-detail-row-value text-right" value="AAA"></input>
+						<div id="teaGradeVal" class="product-detail-row-value">AAA</div>
 					</li>
 					<li id="roastDate" class="list-group-item">
 						<div class="product-detail-row-title">Roast Date</div>
-						<input id="roastDateVal" class="product-detail-row-value text-right" value="April 2, 2018"></input>
+						<div id="roastDateVal" class="product-detail-row-value">April 2, 2018</div>
 					</li>
 				</ul>
 			</div>
+		</div>
 
-			<div class="row card-content product-save-delete">
-					<button type="button" class="btn btn-danger mr-1">Delete</button>
-					<button type="button" class="btn btn-success">Save</button>
-			</div>
-		</div>	
+		<div id="comments" class="card">
+			<h4>Comments</h4>
+		</div>
+
 	</div>
+
+
 </body>
 </html>

@@ -102,6 +102,9 @@
 					</li>
 				</ul>
 			</div>
+			<div class="row card-content product-save-delete">
+				<a class="btn btn-success mr-1" href="productDetails.php">More Info</a>
+			</div>
 		</div>
 	</div>
 
