@@ -1,29 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Al-Mukha</title>
-
-	<?php include('bootstrap.php'); ?>
-	<!-- main page stylesheet -->
-	<link rel="stylesheet" href="./css/style.css">
-	<link rel="stylesheet" href="./css/owner.css">
-
-</head>
-<body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="index.php">Al-Mukha Coffee & Tea</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="productManagementPageOwnerInfo mr-2">
-			Owner
-		</div>
-		<div class="logout-button mr-2">
-			<a href="index.php">Logout</a>
-		</div>
-	</nav>
-
+<?php include 'includes/header.php'; ?>
 	<div class="main-page-content">
 		<button class="btn btn-success mb-2" data-toggle="modal" data-target="#addNewProduct">Add Product</button>
 		<button class="btn btn-success mb-2" data-toggle="modal" data-target="#updateOwnerInfoModal">Update Owner</button>

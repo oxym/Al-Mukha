@@ -1,46 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Al-Mukha</title>
-
-	<?php include('bootstrap.php'); ?>
-	
-	<!-- main page stylesheet -->
-	<link rel="stylesheet" href="./css/style.css">
-
-</head>
-<body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="index.php">Al-Mukha Coffee & Tea</a>
-		<div id="storeName" class="store-name font-italic mr-3">
-			(Store Name)
-		</div>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-
-				<li>
-					<form class="form-inline my-2 my-lg-0" action="search.php" method="POST">
-						<input class="form-control mr-sm-2 search-bar" name="pname" type="text" placeholder="Search" aria-label="Search">
-						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-					</form>
-				</li>
-
-				<li class="register-button mr-2">
-					<a class="nav-link" href="register.php">Register |</a>
-				</li>
-				<li class="login-button mr-2">
-					<a class="nav-link" href="login.php">Login</a>
-				</li>
-			</ul>
-
-		</div>
-	</nav>
-
+<?php include_once 'includes/header.php'; ?>
 	<div class="main-page-content">
 		<div class="card">
 			<div class="card-title">

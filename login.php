@@ -23,7 +23,7 @@
 		<input class="form-control mr-sm-2 mb-2 search-bar" name="email" type="email" placeholder="Email" aria-label="Email">
 		<input class="form-control mr-sm-2 mb-4 search-bar" name="password" type="password" placeholder="Password" aria-label="Password">
 
-		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
 
 	</form>
 
