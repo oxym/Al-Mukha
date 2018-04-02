@@ -12,7 +12,7 @@
 </head>
 <body>
 
-	<form class="customer-register-details" action="search.php" method="POST">
+	<form class="customer-register-details" action="includes/customerRegistration.inc.php" method="POST">
 		<div class="mb-4">
 			Customer Registration
 		</div>
@@ -37,7 +37,7 @@
 			<input class="form-control mr-sm-2 search-bar" name="phone" type="text" placeholder="Phone Number" aria-label="Phone Number">	
 		</div>
 
-		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Register</button>
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="submit">Register</button>
 
 	</form>
 

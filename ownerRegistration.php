@@ -12,7 +12,7 @@
 </head>
 <body>
 
-	<form class="customer-register-details" action="" method="POST">
+	<form class="customer-register-details" action="includes/ownerRegistration.inc.php" method="POST">
 		<div class="mb-4">
 			Owner Registration
 		</div>
