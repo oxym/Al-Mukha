@@ -4,6 +4,14 @@ require_once('dbh.inc.php');
 class CustomerRegister extends Dbh {
 	public function register($firstName,$lastName,$email,$pwdHash,$address,$phone) {
 		$type = 'customer';
+		$sql = "Select * From User WHERE Email='".$email."';";
+		$result = $this->connect()->prepare($sql);
+		$result->execute();
+		if ($result->fetchColumn()) {
+			header("Location: ../customerRegistration.php?emailtaken");
+			exit();
+		}
+
 		$num_of_rows=1;
 		$uid;
 
@@ -71,7 +79,7 @@ if (isset($_POST['submit'])) {
 						$pwdHash = password_hash($password, PASSWORD_DEFAULT);
 						$cr = new CustomerRegister();
 						$cr->register($firstName,$lastName,$email,$pwdHash,$address,$phone);			
-						header("Location: ../customerRegistration.php?signup=success");
+						header("Location: ../index.php?signup=success");
 						exit();
 					}			
 				}
