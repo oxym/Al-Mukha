@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Owner Registration</title>
-
-	<?php include('bootstrap.php'); ?>
-
-	<!-- main page stylesheet -->
-	<link rel="stylesheet" href="./css/register.css">
-
-</head>
-<body>
+<?php
+include_once "includes/header.php";
+?>
 
 	<form class="customer-register-details" action="includes/ownerRegistration.inc.php" method="POST">
 		<div class="mb-4">
@@ -36,7 +26,7 @@
 			<input class="form-control mr-sm-2 mb-2 search-bar" name="companyName" type="text" placeholder="Company Name" aria-label="Company Name">
 		</div>
 
-		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Register</button>
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="submit">Register</button>
 
 	</form>
 
