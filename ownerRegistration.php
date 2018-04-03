@@ -1,6 +1,15 @@
-<?php
-include_once "includes/header.php";
-?>
+<head>
+	<meta charset="utf-8">
+	<title>Customer Registration</title>
+
+	<?php include('bootstrap.php'); ?>
+
+	<!-- main page stylesheet -->
+	<link rel="stylesheet" href="./css/register.css">
+	<link rel="stylesheet" href="./css/owner.css">
+
+</head>
+<body>
 
 	<form class="customer-register-details" action="includes/ownerRegistration.inc.php" method="POST">
 		<div class="mb-4">
