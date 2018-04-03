@@ -8,7 +8,7 @@ class OwnerRegister extends Dbh {
 		$result = $this->connect()->prepare($sql);
 		$result->execute();
 		if ($result->fetchColumn()) {
-			header("Location: ../customerRegistration.php?emailtaken");
+			header("Location: ../ownerRegistration.php?emailtaken");
 			exit();
 		}
 
@@ -47,28 +47,28 @@ if (isset($_POST['submit'])) {
 	//Error handlers
 	//Check for empty fields
 	if (empty($firstName)||empty($lastName)||empty($email)||empty($confirmEmail)||empty($password)||empty($confirmPassword)) {
-		header("Location: ../customerRegistration.php?signup=empty");
+		header("Location: ../ownerRegistration.php?signup=empty");
 		exit();
 	} else {
 		//Check if characters are valid
 		if (!preg_match("/^[a-zA-Z]+$/",$firstName)||!preg_match("/^[a-zA-Z]+$/",$lastName)) {
-			header("Location: ../customerRegistration.php?signup=invalidname");
+			header("Location: ../ownerRegistration.php?signup=invalidname");
 			exit();
 		
 		} else {
 			//Check if two emails match
 			if (!$email=$confirmEmail) {
-				header("Location: ../customerRegistration.php?signup=emailnotmatch");
+				header("Location: ../ownerRegistration.php?signup=emailnotmatch");
 				exit();
 			} else {
 				//Check if email is valid
 				if (!filter_var($email,FILTER_VALIDATE_EMAIL)) {
-					header("Location: ../customerRegistration.php?signup=invalidemail");
+					header("Location: ../ownerRegistration.php?signup=invalidemail");
 					exit();	
 				} else {
 					//Check if two passwords match
 					if (!$password==$confirmPassword) {
-						header("Location: ../customerRegistration.php?signup=passwordnotmatch");
+						header("Location: ../ownerRegistration.php?signup=passwordnotmatch");
 						exit();			
 					} else {
 						//Hashing the password
