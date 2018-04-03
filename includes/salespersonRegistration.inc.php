@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
 						//Hashing the password
 						$pwdHash = password_hash($password, PASSWORD_DEFAULT);
 						$sr = new SalesRegister();
-						$sr->register($firstName,$lastName,$email,$pwdHash,$address,$phone,productSpecialization, storeId);			
+						$sr->register($firstName,$lastName,$email,$pwdHash,$address,$phone,$productSpecialization, $storeId);			
 						header("Location: ../index.php?signup=success");
 						exit();
 					}			
