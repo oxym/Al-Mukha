@@ -4,6 +4,16 @@ require_once('dbh.inc.php');
 class CustomerRegister extends Dbh {
 	public function register($firstName,$lastName,$email,$pwdHash,$address,$phone) {
 		$type = 'customer';
+
+		$sql = "Select * From User WHERE Email=?";
+		$result = $this->connect()->prepare($sql);
+		$result->execute([$email]);
+		$num_of_rows = (int) $result->fetchColumn();
+		if ($num_of_rows > 0) {
+			header("Location: ../customerRegistration.php?emailtaken");
+			exit();
+		}
+
 		$num_of_rows=1;
 		$uid;
 
@@ -20,7 +30,7 @@ class CustomerRegister extends Dbh {
 		$stmt = $this->connect()->prepare($sql);
 		$stmt->execute([$uid, $firstName, $lastName, $email, $pwdHash, $type]);
 
-		$sql = "INSERT INTO User (Customer_Id, Phone, Ship_Address) VALUES (?, ?, ?)";
+		$sql = "INSERT INTO Customer (Customer_Id, Phone, Ship_Address) VALUES (?, ?, ?)";
 		$stmt = $this->connect()->prepare($sql);
 		$stmt->execute([$uid, $phone, $address]);
 	}
