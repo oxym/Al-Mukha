@@ -2,7 +2,7 @@
 include_once "includes/header.php";
 ?>
 
-	<form class="customer-register-details" action="salespersonRegistration.inc.php" method="POST">
+	<form class="customer-register-details" action="includes/salespersonRegistration.inc.php" method="POST">
 		<div class="mb-4">
 			Salesperson Registration
 		</div>
