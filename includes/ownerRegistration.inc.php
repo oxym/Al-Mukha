@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
 	$confirmEmail = $_POST['confirmEmail'];
 	$password = $_POST['password'];
 	$confirmPassword = $_POST['confirmPassword'];
-	$companyName = $_POST['companyName'];
+	$address = $_POST['companyName'];
 
 	//Error handlers
 	//Check for empty fields
