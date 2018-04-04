@@ -38,15 +38,19 @@ session_start();
 
 				<?php
 					if (isset($_SESSION['user_id'])) {
-						echo '<li class="user-id">'.$_SESSION['account_type'].'_'.$_SESSION['user_id'].'</li>'.'<li class="logout-button mr-2">
-					<form action="includes/logout.inc.php" method="POST"> <button type="submit" name="submit">Logout</button></form>
-				</li>';
+						echo '
+							<a class="nav-bar-user" href="owner.php">Welcome: '.$_SESSION['account_type'].'_'.$_SESSION['user_id'].'</a>'.
+							'<li class="logout-button mr-2">
+								<form action="includes/logout.inc.php" method="POST"> <button type="submit" name="submit">Logout</button></form>
+							</li>';
 					} else {
-						echo '<li class="register-button mr-2">
-					<a class="nav-link" href="register.php">Register |</a>
-				</li>'.'<li class="login-button mr-2">
-					<a class="nav-link" href="login.php">Login</a>
-				</li>';
+						echo '
+						<li class="register-button mr-2">
+							<a class="nav-link" href="register.php">Register |</a>
+						</li>'.
+						'<li class="login-button mr-2">
+							<a class="nav-link" href="login.php">Login</a>
+						</li>';
 					}
 				?>
 

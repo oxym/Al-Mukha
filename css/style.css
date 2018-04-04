@@ -77,3 +77,10 @@
     bottom: 0;
 	margin: 0 1.2rem 1rem 0;	
 }
+
+.nav-bar-user {
+	text-decoration: none !important;
+    color: black;
+    margin-left: 1rem;
+    margin-top: 5px;
+}
