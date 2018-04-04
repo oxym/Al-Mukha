@@ -1,6 +1,11 @@
 <?php include 'includes/header.php'; ?>
 <div class="main-page-content">
    <button class="btn btn-success mb-2" data-toggle="modal" data-target="#addNewProduct">Add Product</button>
+
+   <?php
+      $_SESSION['sid'] = $_GET['SID'];
+   ?>
+
    <div class="card">
       <div class="card-title">
          <div id="productTitle">
@@ -26,10 +31,6 @@
             <li class="list-group-item">
                <div class="product-detail-row-title">Shelve Date</div>
                <input id="shelveDateVal" class="product-detail-row-value text-right" value="April 9, 2018"></input>
-            </li>
-            <li class="list-group-item">
-               <div class="product-detail-row-title">Store Name</div>
-               <input id="storeName" class="product-detail-row-value text-right" value="Best Coffee Shop"></input>
             </li>
             <li class="list-group-item">
                <div class="product-detail-row-title">Salesperson</div>
@@ -100,10 +101,6 @@
                      <li class="list-group-item">
                         <div class="product-detail-row-title">Shelve Date</div>
                         <input name="shelveDateVal" class="product-detail-row-value text-right" value=""></input>
-                     </li>
-                     <li class="list-group-item">
-                        <div class="product-detail-row-title">Store Name</div>
-                        <input name="storeName" class="product-detail-row-value text-right" value=""></input>
                      </li>
                      <li class="list-group-item">
                         <div class="product-detail-row-title">Salesperson</div>

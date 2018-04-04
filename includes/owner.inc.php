@@ -11,33 +11,35 @@ class Owner extends Dbh {
 		$stmt->execute([$StoreId]);
 	}
 
-	public function addCoffee(/*$Name, $Price, $Stock, $Origin, $Expiry_Date, $Shelving_Date, $Bean, $Roast, $Roast_Date*/) {
-		/*
+	public function addCoffee($Name, $Price, $Stock, $Origin, $Expiry_Date, $Shelving_Date, $Bean, $Roast, $Roast_Date) {
 		$sql = "INSERT INTO Product (SID, Name, Price, Stock, Origin, Expiry_Date, Shelving_Date, Product_Type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 		$stmt = $this->connect()->prepare($sql);
-		$stmt->execute([@_COOKIE[‘sid’], $Name, $Price, $Stock, $Origin, $Expiry_Date, $Shelving_Date, @_COOKIE[‘product_type’]]);
+		$stmt->execute([$_SESSION['sid'], $Name, $Price, $Stock, $Origin, $Expiry_Date, $Shelving_Date, 'Coffee']);
 
 		$sql = "INSERT INTO Coffee (SID, name, bean_type, roast_type, roast_date) VALUES (?, ?, ?, ?, ?)";
 		$stmt = $this->connect()->prepare($sql);
-		$stmt->execute([@_COOKIE[‘sid’], $Name, $Bean, $Roast, $Roast_Date]);
-		*/
-		echo 'you\'re adding coffee !!';
+
+		if ($stmt->execute([$_SESSION['sid'], $Name, $Bean, $Roast, $Roast_Date])) {
+			header("Location: ../ownerStoresProducts.php?coffee added&SID=".$_SESSION['sid']);
+		} else {
+			header("Location: ../ownerStoresProducts.php?coffee not added");
+		}
 	}
 
-	public function addTea(/*$Name, $Price, $Stock, $Origin, $Expiry_Date, $Shelving_Date, $Tea_Type, $Grade*/) {
-		/*
+	public function addTea($Name, $Price, $Stock, $Origin, $Expiry_Date, $Shelving_Date, $Tea_Type, $Grade) {
 		$sql = "INSERT INTO Product (SID, Name, Price, Stock, Origin, Expiry_Date, Shelving_Date, Product_Type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		$stmt = $this->connect()->prepare($sql);
-		$stmt->execute([$_COOKIE['sid'], $Name, $Price, $Stock, $Origin, $Expiry_Date, $Shelving_Date, 'Tea']);
+		$stmt->execute([$_SESSION['sid'], $Name, $Price, $Stock, $Origin, $Expiry_Date, $Shelving_Date, 'Tea']);
 
 		$sql = "INSERT INTO Tea (SID, Name, Tea_Type, Grade) VALUES (?, ?, ?, ?)";
 		$stmt = $this->connect()->prepare($sql);
-		$stmt->execute([$_COOKIE['sid'], $Name, $Tea_Type, $Grade]);
-
-		//echo 'you\'re adding tea !!!';
-		header("Location: ../owner.php?tea added");
-		*/
+		
+		if ($stmt->execute([$_SESSION['sid'], $Name, $Tea_Type, $Grade])) {
+			header("Location: ../ownerStoresProducts.php?tea added");	
+		} else {
+			header("Location: ../ownerStoresProducts.php?tea failed to add");
+		}
 	}
 
 	public function addStore($Name, $Description, $Opening_Date) {
@@ -91,7 +93,18 @@ if (isset($_POST['addTea'])) {
 
 if (isset($_POST['addCoffee'])) {
 	$owner = new Owner();
-	$owner->addCoffee();
+	
+	$Name = $_POST['nameVal'];
+	$Stock = $_POST['stockVal'];
+	$Price = $_POST['priceVal'];
+	$Origin = $_POST['originVal'];
+	$Expiry_Date = $_POST['expiryDateVal'];
+	$Shelving_Date = $_POST['shelveDateVal'];
+	$Bean = $_POST['beanTypeVal'];
+	$Roast = $_POST['roastTypeVal'];
+	$Roast_Date = $_POST['roastDateVal'];
+
+	$owner->addCoffee($Name, $Price, $Stock, $Origin, $Expiry_Date, $Shelving_Date, $Bean, $Roast, $Roast_Date);
 }
 
 if (isset($_POST['addStore'])) {

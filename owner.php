@@ -29,7 +29,7 @@
          </ul>
       </div>
       <div class="row card-content product-save-delete">
-         <a class="btn btn-success mr-1" href="ownerStoresProducts.php">View Products</a>
+         <a class="btn btn-success mr-1" href="ownerStoresProducts.php?SID=<?=$row['SID']?>">View Products</a>
          <button type="button" class="btn btn-danger mr-1">Delete</button>
          <button type="button" class="btn btn-success">Save</button>
       </div>
