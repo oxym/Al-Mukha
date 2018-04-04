@@ -10,7 +10,7 @@
       
       foreach($stores as $row):
       ?>
-   <div class="card">
+   <form class="card" action="includes/owner.inc.php" method="POST">
       <div class="card-title">
          <div id="productTitle">
             <?=$row['Name']?>
@@ -30,10 +30,11 @@
       </div>
       <div class="row card-content product-save-delete">
          <a class="btn btn-success mr-1" href="ownerStoresProducts.php?SID=<?=$row['SID']?>">View Products</a>
-         <button type="button" class="btn btn-danger mr-1">Delete</button>
+         <input type="hidden" name="storeID" value="<?=$row['SID']?>">
+         <button type="submit" class="btn btn-danger mr-1" name="deleteStore">Delete</button>
          <button type="button" class="btn btn-success">Save</button>
       </div>
-   </div>
+   </form>
    <?php endforeach;?>
    <!-- Modal for profile update -->
    <div class="modal fade" id="updateOwnerInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

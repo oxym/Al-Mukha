@@ -95,6 +95,19 @@ class Owner extends Dbh {
 		return $ownersStores;
 	}
 
+	public function deleteStore($SID) {
+		$sql = "DELETE FROM sys.Store WHERE SID = ?";
+			
+		$stmt = $this->connect()->prepare($sql);
+		
+		if ($stmt->execute([$SID])) {
+			header("Location: ../owner.php?Store_deleted");
+		} else {
+			header("Location: ../owner.php?Store_delete_FAILED");
+		}
+
+	}
+
 }
 
 if (isset($_POST['addTea'])) {
@@ -136,6 +149,14 @@ if (isset($_POST['addStore'])) {
 	$Opening_Date = $_POST['storeOpeningDate'];
 
 	$owner->addStore($Name, $Description, $Opening_Date);
+}
+
+if (isset($_POST['deleteStore'])) {
+	$owner = new Owner();
+
+	$storeID = $_POST['storeID'];
+
+	$owner->deleteStore($storeID);
 }
 
 
