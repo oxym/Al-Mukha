@@ -5,10 +5,30 @@ if(!isset($_SESSION))
 } 
 require_once('dbh.inc.php');
 class Owner extends Dbh {
-	public function getStoreProducts($StoreId) {
-		$sql = "SELECT * FROM Product AS p WHERE p.SID = ? ";
+	public function getStoreCoffees($StoreId) {
+		$sql = "
+			SELECT p.SID, p.Name, p.Price, p.Stock, p.Origin, p.Expiry_Date, p.Shelving_Date, p.Product_Type, c.Bean_Type, c.Roast_Type, c.Roast_Date FROM sys.Product AS p
+			NATURAL JOIN sys.Coffee AS c 
+			WHERE  p.Product_Type = 'Coffee' AND c.SID = p.SID AND p.SID = ?";
+
 		$stmt = $this->connect()->prepare($sql);
-		$stmt->execute([$StoreId]);
+		$stmt->execute([$_SESSION['sid']]);
+
+		$storeProducts = $stmt->fetchAll();
+		return $storeProducts;
+	}
+
+	public function getStoreTeas($StoreId) {
+		$sql = "
+			SELECT  p.SID, p.Name, p.Price, p.Stock, p.Origin, p.Expiry_Date, p.Shelving_Date, p.Product_Type, t.Grade, t.Tea_Type  FROM sys.Product AS p
+			NATURAL JOIN sys.Tea AS t
+			WHERE  p.Product_Type = 'Tea' AND t.SID = p.SID AND p.SID = ?";
+
+		$stmt = $this->connect()->prepare($sql);
+		$stmt->execute([$_SESSION['sid']]);
+
+		$storeProducts = $stmt->fetchAll();
+		return $storeProducts;
 	}
 
 	public function addCoffee($Name, $Price, $Stock, $Origin, $Expiry_Date, $Shelving_Date, $Bean, $Roast, $Roast_Date) {
@@ -29,6 +49,7 @@ class Owner extends Dbh {
 
 	public function addTea($Name, $Price, $Stock, $Origin, $Expiry_Date, $Shelving_Date, $Tea_Type, $Grade) {
 		$sql = "INSERT INTO Product (SID, Name, Price, Stock, Origin, Expiry_Date, Shelving_Date, Product_Type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+
 		$stmt = $this->connect()->prepare($sql);
 		$stmt->execute([$_SESSION['sid'], $Name, $Price, $Stock, $Origin, $Expiry_Date, $Shelving_Date, 'Tea']);
 
@@ -36,7 +57,7 @@ class Owner extends Dbh {
 		$stmt = $this->connect()->prepare($sql);
 		
 		if ($stmt->execute([$_SESSION['sid'], $Name, $Tea_Type, $Grade])) {
-			header("Location: ../ownerStoresProducts.php?tea added");	
+			header("Location: ../ownerStoresProducts.php?tea added&SID=".$_SESSION['sid']);	
 		} else {
 			header("Location: ../ownerStoresProducts.php?tea failed to add");
 		}
