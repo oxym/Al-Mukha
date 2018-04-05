@@ -58,11 +58,6 @@
             </li>
          </ul>
       </div>
-      <div class="row card-content product-save-delete">
-         <input type="hidden" name="nameVal" value="<?= $row['Name']?>">
-         <button type="submit" class="btn btn-danger mr-1" name="deleteProduct">Delete</button>
-         <button type="button" class="btn btn-success">Save</button>
-      </div>
    </form>
    <?php endforeach;?>
 
@@ -113,11 +108,6 @@
                <input class="product-detail-row-value text-right" value="<?=$row['Grade']?>"></input>
             </li>
          </ul>
-      </div>
-      <div class="row card-content product-save-delete">
-         <input type="hidden" name="nameVal" value="<?= $row['Name']?>">
-         <button type="submit" class="btn btn-danger mr-1" name="deleteProduct">Delete</button>
-         <button type="button" class="btn btn-success">Save</button>
       </div>
    </form>
    <?php endforeach;?>
