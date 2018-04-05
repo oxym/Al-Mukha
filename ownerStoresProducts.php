@@ -1,6 +1,8 @@
 <?php include 'includes/header.php'; ?>
 <div class="main-page-content">
    <button class="btn btn-success mb-2" data-toggle="modal" data-target="#addNewProduct">Add Product</button>
+   <button class="btn btn-success mb-2" data-toggle="modal" data-target="#addPromotion">Add Promotion</button>
+
    <?php
       $_SESSION['sid'] = $_GET['SID'];
       
@@ -120,6 +122,50 @@
    </form>
    <?php endforeach;?>
 
+
+   <!-- TODO display promotion -->
+
+
+    <!-- Modal for adding Promotion -->
+   <div class="modal fade" id="addPromotion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+         <form class="modal-content" action="includes/owner.inc.php" method="POST">
+            <div class="modal-header">
+               <h5 class="modal-title" id="exampleModalLabel">Add New Promotion</h5>
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+               </button>
+            </div>
+            <div class="modal-body">
+               <div class="row card-content">
+                  <ul class="list-group col-md-6">
+                     <li class="list-group-item product-detail-row">
+                        <div class="product-detail-row-title">Promo Code</div>
+                        <input name="promoVal" class="product-detail-row-value text-right" value=""></input>
+                     </li>
+                     <li class="list-group-item product-detail-row">
+                        <div class="product-detail-row-title">Start Date</div>
+                        <input name="startVal" class="product-detail-row-value text-right" value=""></input>
+                     </li>
+                     <li class="list-group-item product-detail-row">
+                        <div class="product-detail-row-title">End Date</div>
+                        <input name="endVal" class="product-detail-row-value text-right" value=""></input>
+                     </li>
+                     <li class="list-group-item">
+                        <div class="product-detail-row-title">Percentage Off</div>
+                        <input name="percentVal" class="product-detail-row-value text-right" value=""></input>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+            <div class="modal-footer">
+               <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+               <button type="submit" name="addPromotion" class="btn btn-primary">Add Promotion</button>
+            </div>
+         </form>
+      </div>
+   </div>
+
    <!-- Modal for adding new product -->
    <div class="modal fade" id="addNewProduct" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -194,6 +240,8 @@
          </form>
       </div>
    </div>
+
+  
 </div>
 </body>
 </html>

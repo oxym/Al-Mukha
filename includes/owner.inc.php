@@ -47,6 +47,18 @@ class Owner extends Dbh {
 		}
 	}
 
+	public function addPromotion($Promo_Code, $Start_Date, $End_Date, $Percent_Off){
+		$sql = "INSERT INTO Promotion (SID, Promo_Code, Start_Date, End_Date, Percent_Off) VALUES (?, ?, ?, ?, ?)";
+
+		$stmt = $this->connect()->prepare($sql);
+
+		if ($stmt->execute([$_SESSION['sid'], $Promo_Code, $Start_Date, $End_Date, $Percent_Off])) {
+			header("Location: ../ownerStoresProducts.php?promotion added&SID=".$_SESSION['sid']);
+		} else {
+			header("Location: ../ownerStoresProducts.php?promotion not added");
+		}
+	}
+
 	public function addTea($Name, $Price, $Stock, $Origin, $Expiry_Date, $Shelving_Date, $Tea_Type, $Grade) {
 		$sql = "INSERT INTO Product (SID, Name, Price, Stock, Origin, Expiry_Date, Shelving_Date, Product_Type) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
@@ -151,6 +163,18 @@ if (isset($_POST['addCoffee'])) {
 	$Roast_Date = $_POST['roastDateVal'];
 
 	$owner->addCoffee($Name, $Price, $Stock, $Origin, $Expiry_Date, $Shelving_Date, $Bean, $Roast, $Roast_Date);
+}
+
+if (isset($_POST['addPromotion'])) {
+	$owner = new Owner();
+
+	$Promo_Code = $_POST['promoVal'];
+	$Start_Date = $_POST['startVal'];
+	$End_Date = $_POST['endVal'];
+	$Percent_Off = $_POST['percentVal'];
+
+
+	$owner->addPromotion($Promo_Code, $Start_Date, $End_Date, $Percent_Off);
 }
 
 if (isset($_POST['addStore'])) {
