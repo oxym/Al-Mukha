@@ -25,11 +25,10 @@
 					</li>
 				</ul>
 				<div class="card-content more-info-store-owner">
-					<a class="btn btn-success" href="products.php">More Info.</a>
+					<a class="btn btn-success" href="products.php?SID=<?=$row['SID']?>">More Info.</a>
 				</div>
 			</div>
 		</div>
-
 		<?php endforeach;?>
 
 	</div>

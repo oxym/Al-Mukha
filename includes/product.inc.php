@@ -8,7 +8,9 @@ class Product extends Dbh {
 		return $stmt;
 	}
 
-
+	protected function getProductsForStore($SID) {
+		
+	}
 }
 
 
