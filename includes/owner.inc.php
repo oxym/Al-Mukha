@@ -105,9 +105,21 @@ class Owner extends Dbh {
 		} else {
 			header("Location: ../owner.php?Store_delete_FAILED");
 		}
-
 	}
 
+	public function deleteProduct($Name) {
+		$sql = "
+			DELETE FROM sys.Product
+			WHERE Name = ? AND SID = ?";
+
+		$stmt = $this->connect()->prepare($sql);
+
+		if($stmt->execute([$Name, $_SESSION['sid']])) {
+			header("Location: ../ownerStoresProducts.php?product_deleted&SID=".$_SESSION['sid']);
+		} else {
+			header("Location: ../ownerStoresProducts.php?failed_to_delete_product");
+		}
+	}
 }
 
 if (isset($_POST['addTea'])) {
@@ -160,7 +172,13 @@ if (isset($_POST['deleteStore'])) {
 }
 
 
+if (isset($_POST['deleteProduct'])) {
+	$owner = new Owner();
 
+	$Name = $_POST['nameVal'];
+
+	$owner->deleteProduct($Name);
+}
 
 
 

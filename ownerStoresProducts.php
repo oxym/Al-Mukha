@@ -1,20 +1,17 @@
 <?php include 'includes/header.php'; ?>
 <div class="main-page-content">
    <button class="btn btn-success mb-2" data-toggle="modal" data-target="#addNewProduct">Add Product</button>
-
    <?php
       $_SESSION['sid'] = $_GET['SID'];
-
+      
       include 'includes/owner.inc.php';
-
+      
       $owner = new Owner();      
       $storeCoffees = $owner->getStoreCoffees($_GET['SID']);
       
       foreach($storeCoffees as $row):
-   ?>
-
-
-   <div class="card">
+      ?>
+   <form class="card" action="includes/owner.inc.php" method="POST">
       <div class="card-title">
          <div id="productTitle">
             <div id="productType"><?=$row['Product_Type']?></div>
@@ -61,21 +58,19 @@
          </ul>
       </div>
       <div class="row card-content product-save-delete">
-         <button type="button" class="btn btn-danger mr-1">Delete</button>
+         <input type="hidden" name="nameVal" value="<?= $row['Name']?>">
+         <button type="submit" class="btn btn-danger mr-1" name="deleteProduct">Delete</button>
          <button type="button" class="btn btn-success">Save</button>
       </div>
-   </div>
+   </form>
    <?php endforeach;?>
-
-
-
 
    <?php
       $storeTeas = $owner->getStoreTeas($_GET['SID']);
       
       foreach($storeTeas as $row):
-   ?>
-      <div class="card">
+      ?>
+   <form class="card" class="card" action="includes/owner.inc.php" method="POST">
       <div class="card-title">
          <div id="productTitle">
             <div><?=$row['Product_Type']?></div>
@@ -118,10 +113,11 @@
          </ul>
       </div>
       <div class="row card-content product-save-delete">
-         <button type="button" class="btn btn-danger mr-1">Delete</button>
+         <input type="hidden" name="nameVal" value="<?= $row['Name']?>">
+         <button type="submit" class="btn btn-danger mr-1" name="deleteProduct">Delete</button>
          <button type="button" class="btn btn-success">Save</button>
       </div>
-   </div>
+   </form>
    <?php endforeach;?>
 
    <!-- Modal for adding new product -->
