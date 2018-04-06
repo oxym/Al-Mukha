@@ -38,11 +38,26 @@ session_start();
 
 				<?php
 					if (isset($_SESSION['user_id'])) {
-						echo '
+						if ($_SESSION['account_type'] == 'owner') {
+							echo '
 							<a class="nav-bar-user" href="owner.php">Welcome: '.$_SESSION['account_type'].'_'.$_SESSION['user_id'].'</a>'.
 							'<li class="logout-button mr-2">
 								<form action="includes/logout.inc.php" method="POST"> <button type="submit" name="submit" class="btn btn-danger">Logout</button></form>
 							</li>';
+						} else if ($_SESSION['account_type'] == 'customer') {
+							echo '
+							<a class="nav-bar-user" href="customer.php">Welcome: '.$_SESSION['account_type'].'_'.$_SESSION['user_id'].'</a>'.
+							'<li class="logout-button mr-2">
+								<form action="includes/logout.inc.php" method="POST"> <button type="submit" name="submit" class="btn btn-danger">Logout</button></form>
+							</li>';
+						} else {
+							echo '
+							<a class="nav-bar-user" href="index.php">Welcome: '.$_SESSION['account_type'].'_'.$_SESSION['user_id'].'</a>'.
+							'<li class="logout-button mr-2">
+								<form action="includes/logout.inc.php" method="POST"> <button type="submit" name="submit" class="btn btn-danger">Logout</button></form>
+							</li>';
+						}
+					
 					} else {
 						echo '
 						<li class="register-button mr-2">
