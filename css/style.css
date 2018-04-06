@@ -109,6 +109,8 @@
 
 .promotions {
 	display: inline-block;
+	overflow-x: auto;
+	white-space: nowrap;
 }
 
 .promotion-card {
