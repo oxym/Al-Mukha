@@ -10,8 +10,6 @@
       
       foreach($coffeeDetails as $row):
       ?>
-
-
    <form class="card" action="includes/owner.inc.php" method="POST">
       <div class="card-title">
          <div id="productTitle">
@@ -60,8 +58,6 @@
       </div>
    </form>
    <?php endforeach;?>
-
-
    <?php
       $storeTeas = $product->getTeaProductDetails();
       
@@ -111,48 +107,42 @@
       </div>
    </form>
    <?php endforeach;
-
-   if (isset($_SESSION['account_type'])) {
-      if ($_SESSION['account_type'] == 'customer') {
-         echo ' <form class="card" action="includes/purchase.inc.php" method=POST>
-         <div class="purchase-section">';
-         echo '<input value ="1" class="purchase-input" type="number" name="amount"/>';
-         echo '<input type="hidden" name="sid" value ="'.$_GET['SID'].'" />';
-         echo '<input type="hidden" name="name" value ="'.$_GET['Name'].'" />';
-         echo '<button class="btn btn-success mr-1" type="submit" name="submit">Buy</button>
-         </div> 
-         </form>';
+      if (isset($_SESSION['account_type'])) {
+         if ($_SESSION['account_type'] == 'customer') {
+            echo ' <form class="card" action="includes/purchase.inc.php" method=POST>
+            <div class="purchase-section">';
+            echo '<input value ="1" class="purchase-input" type="number" name="amount"/>';
+            echo '<input type="hidden" name="sid" value ="'.$_GET['SID'].'" />';
+            echo '<input type="hidden" name="name" value ="'.$_GET['Name'].'" />';
+            echo '<button class="btn btn-success mr-1" type="submit" name="submit">Buy</button>
+            </div> 
+            </form>';
+         }
       }
-   }
-   ?>
-
-
+      ?>
    <div id="comments" class="card">
       <h4>Comments</h4>
    </div>
    <?php
-   $comments = $product->getAllComments();
-   foreach ($comments as $comment): 
-   ?>
+      $comments = $product->getAllComments();
+      foreach ($comments as $comment): 
+      ?>
    <div class="card">
-         <div class="row card-content">
-            <ul class="list-group col-md-10 mb-2">
-               <li class="list-group-item product-detail-row">
-                  <div id="commenterFirst" class="product-detail-row-value"><?=$comment['FirstName']?></div>
-               </li>
-               <li class="list-group-item product-detail-row">
-                  <div id="commentText" class="product-detail-row-value"><?=$comment['Comment']?></div>
-               </li>
-               <li class="list-group-item product-detail-row">
-                  <div id="commentTime" class="product-detail-row-value"><?=$comment['Comment_Time']?></div>
-               </li>
-            </ul>
-         </div>
+      <div class="row card-content">
+         <ul class="list-group col-md-12 mb-2">
+            <li class="list-group-item product-detail-row">
+               <div id="commenterFirst" class="product-detail-row-value"><?=$comment['FirstName']?></div>
+            </li>
+            <li class="list-group-item product-detail-row">
+               <div id="commentText" class="product-detail-row-value"><?=$comment['Comment']?></div>
+            </li>
+            <li class="list-group-item product-detail-row">
+               <div id="commentTime" class="product-detail-row-value"><?=$comment['Comment_Time']?></div>
+            </li>
+         </ul>
       </div>
    </div>
-
-
-<?php endforeach;?>
+   <?php endforeach;?>
 </div>
 </body>
 </html>
