@@ -96,3 +96,13 @@
     top: 16px;
     position: absolute;
 }
+
+.average-rating {
+	position: absolute;
+    right: 10px;
+    top: 20px;
+    display: inline-block;
+}
+.average-rating div {
+	display: inline-block;
+}

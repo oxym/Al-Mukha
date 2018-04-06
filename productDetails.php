@@ -122,6 +122,16 @@
       ?>
    <div id="comments" class="card">
       <h4>Comments</h4>
+      <div class="average-rating">
+         <div>Average Rating</div>
+            <?php
+               $rating = $product->getAverageRating();
+            ?>
+         <div class="font-weight-bold">
+            <?php echo round($rating[0], 2) ?>
+         </div>
+
+      </div>
    </div>
    <?php
       $comments = $product->getAllComments();

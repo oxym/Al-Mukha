@@ -49,11 +49,6 @@ class Product extends Dbh {
 			JOIN sys.User AS u ON p.UID = u.User_Id
 			WHERE p.SID = ? AND p.PName = ?";
 
-			//SELECT * FROM sys.Purchase_Comment AS p
-//JOIN sys.User AS u ON p.UID = u.User_Id
-			//SELECT * FROM Purchase_Comment NATURAL JOIN User WHERE  SID = ? AND PName = ?
-			
-
 			$stmt = $this->connect()->prepare($sql);
 			$stmt->execute([$this->sid, $this->name]);
 
@@ -82,6 +77,19 @@ class Product extends Dbh {
 		$sql = "UPDATE Product SET Stock = Stock - ? WHERE SID = ? AND Name = ?";
 		$stmt = $this->connect()->prepare($sql);
 		$stmt->execute([$amount, $this->sid, $this->name]);
+	}
+
+	public function getAverageRating() {
+		$sql = "
+		SELECT AVG(p.Rating)  FROM sys.Purchase_Comment AS p
+		WHERE PName = ?";
+
+		$stmt = $this->connect()->prepare($sql);
+		$stmt->execute([$this->name]);
+
+		$averageRating = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
+
+		return $averageRating;
 	}
 }
 
