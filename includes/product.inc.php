@@ -45,7 +45,14 @@ class Product extends Dbh {
 
 	public function getAllComments() {
 		$sql = "
-			SELECT * FROM Purchase_Comment NATURAL JOIN User WHERE  SID = ? AND PName = ?";
+			SELECT * FROM sys.Purchase_Comment AS p
+			JOIN sys.User AS u ON p.UID = u.User_Id
+			WHERE p.SID = ? AND p.PName = ?";
+
+			//SELECT * FROM sys.Purchase_Comment AS p
+//JOIN sys.User AS u ON p.UID = u.User_Id
+			//SELECT * FROM Purchase_Comment NATURAL JOIN User WHERE  SID = ? AND PName = ?
+			
 
 			$stmt = $this->connect()->prepare($sql);
 			$stmt->execute([$this->sid, $this->name]);
