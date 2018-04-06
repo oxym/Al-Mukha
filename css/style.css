@@ -84,3 +84,15 @@
     margin-left: 1rem;
     margin-top: 5px;
 }
+
+.purchase-section {
+	text-align: end;
+}
+
+.purchase-input {
+	height: 38px;
+    width: 4rem;
+    right: 90px;
+    top: 16px;
+    position: absolute;
+}

@@ -114,15 +114,15 @@
 
    if (isset($_SESSION['account_type'])) {
       if ($_SESSION['account_type'] == 'customer') {
-      echo ' <form class="card" action="includes/purchase.inc.php" method=POST>
-      <div>';
-      echo '<input value ="1" type="number" name="amount"/>';
-      echo '<input type="hidden" name="sid" value ="'.$_GET['SID'].'" />';
-      echo '<input type="hidden" name="name" value ="'.$_GET['Name'].'" />';
-      echo '<button class="btn btn-success mr-1" type="submit" name="submit">Buy</button>
-      </div> 
-   </form>';
-   }
+         echo ' <form class="card" action="includes/purchase.inc.php" method=POST>
+         <div class="purchase-section">';
+         echo '<input value ="1" class="purchase-input" type="number" name="amount"/>';
+         echo '<input type="hidden" name="sid" value ="'.$_GET['SID'].'" />';
+         echo '<input type="hidden" name="name" value ="'.$_GET['Name'].'" />';
+         echo '<button class="btn btn-success mr-1" type="submit" name="submit">Buy</button>
+         </div> 
+         </form>';
+      }
    }
    ?>
 
