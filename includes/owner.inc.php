@@ -107,6 +107,20 @@ class Owner extends Dbh {
 		return $ownersStores;
 	}
 
+	public function getSalespersonStore($Sales) {
+		$sql = "
+			SELECT * FROM sys.Store AS st
+			NATURAL JOIN sys.SalesPerson AS sa
+			WHERE st.SID = sa.SID AND sa.SalesPerson_Id = ?";
+
+		$stmt = $this->connect()->prepare($sql);
+		$stmt->execute([$Sales]);
+
+		$salesPersonStore = $stmt->fetchAll();
+
+		return $salesPersonStore;
+	}
+
 	public function deleteStore($SID) {
 		$sql = "DELETE FROM sys.Store WHERE SID = ?";
 			

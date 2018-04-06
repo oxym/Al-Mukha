@@ -5,9 +5,14 @@
    <?php 
       include 'includes/owner.inc.php';
       
-      $owner = new Owner();		
-      $stores = $owner->getOwnersStores($_SESSION['user_id']);
-      
+      $owner = new Owner();   
+
+      if ($_SESSION['account_type'] == "owner") {
+         $stores = $owner->getOwnersStores($_SESSION['user_id']);     
+      } else {
+         $stores = $owner->getSalespersonStore($_SESSION['user_id']);
+      }
+
       foreach($stores as $row):
       ?>
    <form class="card" action="includes/owner.inc.php" method="POST">
