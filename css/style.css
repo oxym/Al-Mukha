@@ -106,3 +106,11 @@
 .average-rating div {
 	display: inline-block;
 }
+
+.promotions {
+	display: inline-block;
+}
+
+.promotion-card {
+	display: inline-block;
+}

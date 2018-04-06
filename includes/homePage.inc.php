@@ -14,4 +14,8 @@ class HomePage extends Dbh {
 		$stores = $stmt->fetchAll();
 		return $stores;
 	}
+
+	public function getAllPromotions() {
+		
+	}
 }
