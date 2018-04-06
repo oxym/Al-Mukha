@@ -1,19 +1,55 @@
-<?php include 'includes/header.php'; ?>
-	<div class="main-page-content">
+<?php include 'includes/header.php'; 
+
+if (!$_SESSION['account_type'] == 'customer') {
+	header("Location: 404.php");
+	exit();
+}
+?>
+<div class="main-page-content">
 		<h3>Order History</h3>
+<?php
+require_once('includes/customer.inc.php');
+$customer = new Customer($_SESSION['user_id']);
+$purchases = $customer->getAllPurchases();
+foreach($purchases as $purchase):
+?>
 		<div class="card">
 			<div class="row card-content">
 				<ul class="list-group col-md-10 mb-2">
 					<li class="list-group-item product-detail-row">
-						<div class="product-detail-row-title">Order Number</div>
-						<div id="customerOrderNumber" class="product-detail-row-value">1DB328FHDB</div>
+						<div class="product-detail-row-title">Store ID</div>
+						<div id="customerOrderNumber" class="product-detail-row-value"><?=$purchase['SID']?></div>
+					</li>
+					<li class="list-group-item product-detail-row">
+						<div class="product-detail-row-title">Product Name</div>
+						<div id="customerOrderNumber" class="product-detail-row-value"><?=$purchase['PName']?></div>
+					</li>
+					<li class="list-group-item product-detail-row">
+						<div class="product-detail-row-title">Quantity</div>
+						<div id="customerOrderNumber" class="product-detail-row-value"><?=$purchase['Amount']?></div>
+					</li>
+					<li class="list-group-item product-detail-row">
+						<div class="product-detail-row-title">Date</div>
+						<div id="customerOrderNumber" class="product-detail-row-value"><?=$purchase['Purchase_Date']?></div>
 					</li>
 				</ul>
 				<div class="col-md-2 mt-1">
-					<button class="btn btn-success" data-toggle="modal" data-target="#productCommentModal">Comment</button>
+					<form action="includes/comment.inc.php" method=POST> 
+						<?php
+						echo '<input type="hidden" name="sid" value ="'.$purchase['SID'].'" />';
+      					echo '<input type="hidden" name="name" value ="'.$purchase['PName'].'" />';?>
+						<input class="list-group-item" type="Number", name="userRating", value="9"></input>
+						<input class="list-group-item" type="text", name="userComment", value="comment"></input>
+						<button class="btn btn-success" name="submit" type="submit">Comment</button>
+					</form>
+					<!--<form>
+						<button class="btn btn-success" data-toggle="modal" data-target="#productCommentModal">Comment</button>
+					</form>
+					-->
 				</div>
 			</div>
 		</div>
+<?php endforeach;?>
 		<button class="btn btn-success d-inline-block" data-toggle="modal" data-target="#updateCustomerInfoModal">Update Account</button>
 	</div>
 
@@ -51,7 +87,7 @@
 
 
 	<!-- Modal for product comment -->
-	<div class="modal fade" id="productCommentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="productCommentModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -111,6 +147,32 @@
 								<input id="roastDateVal" class="product-detail-row-value text-right" value="April 2, 2018"></input>
 							</li>
 						</ul>
+					</div>
+					<div class="mt-2">
+						<h4>Comment</h4>
+						<textarea class="form-control" id="commentForProduct" rows="6"></textarea>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="productCommentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Update Customer Account</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="row card-content">
+						<ul class="list-group col-md-6">
 					</div>
 					<div class="mt-2">
 						<h4>Comment</h4>
