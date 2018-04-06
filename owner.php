@@ -20,6 +20,9 @@
          <div id="productTitle">
             <?=$row['Name']?>
          </div>
+         <div>
+         	Store ID <?=$row['SID']?>
+         </div>
       </div>
       <div class="row card-content">
          <ul class="list-group col-md-6">
