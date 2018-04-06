@@ -15,7 +15,7 @@ foreach($purchases as $purchase):
 ?>
 		<div class="card">
 			<div class="row card-content">
-				<ul class="list-group col-md-10 mb-2">
+				<ul class="list-group col-md-12 mb-2">
 					<li class="list-group-item product-detail-row">
 						<div class="product-detail-row-title">Store ID</div>
 						<div id="customerOrderNumber" class="product-detail-row-value"><?=$purchase['SID']?></div>
@@ -33,20 +33,18 @@ foreach($purchases as $purchase):
 						<div id="customerOrderNumber" class="product-detail-row-value"><?=$purchase['Purchase_Date']?></div>
 					</li>
 				</ul>
-				<div class="col-md-2 mt-1">
-					<form action="includes/comment.inc.php" method=POST> 
-						<?php
-						echo '<input type="hidden" name="sid" value ="'.$purchase['SID'].'" />';
-      					echo '<input type="hidden" name="name" value ="'.$purchase['PName'].'" />';?>
-						<input class="list-group-item" type="Number", name="userRating", value="9"></input>
-						<input class="list-group-item" type="text", name="userComment", value="comment"></input>
-						<button class="btn btn-success" name="submit" type="submit">Comment</button>
-					</form>
-					<!--<form>
-						<button class="btn btn-success" data-toggle="modal" data-target="#productCommentModal">Comment</button>
-					</form>
-					-->
-				</div>
+				<form action="includes/comment.inc.php" class="list-group col-md-12" method=POST> 
+					<?php
+					echo '<input type="hidden" name="sid" value ="'.$purchase['SID'].'" />';
+  					echo '<input type="hidden" name="name" value ="'.$purchase['PName'].'" />';?>
+					<input class="list-group-item" type="Number", name="userRating", value="9"></input>
+					<input class="list-group-item" type="text", name="userComment", value="comment"></input>
+					<button class="btn btn-success w-25 mt-2 mx-auto" name="submit" type="submit">Comment</button>
+				</form>
+				<!--<form>
+					<button class="btn btn-success" data-toggle="modal" data-target="#productCommentModal">Comment</button>
+				</form>
+				-->
 			</div>
 		</div>
 <?php endforeach;?>
