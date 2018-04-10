@@ -2,6 +2,7 @@
 if(!isset($_SESSION)) 
 { 
     session_start(); 
+    
 } 
 require_once('dbh.inc.php');
 class Owner extends Dbh {
@@ -145,6 +146,21 @@ class Owner extends Dbh {
 		} else {
 			header("Location: ../ownerStoresProducts.php?failed_to_delete_product");
 		}
+	}
+
+	public function search($like) {
+		$sql = "SELECT s.Name AS store_name,
+					   s.SID AS store_id,
+					   u.FirstName AS first_name,
+					   u.LastName AS last_name,
+					   o.Co_Name AS company_name
+					   FROM User as u JOIN Owner as o ON u.User_Id = o.Owner_Id JOIN Store as s ON o.Owner_Id = s.Own_ID 
+					   WHERE u.FirstName LIKE '%".$like."%' OR
+					   		 u.LastName LIKE '%".$like."%' OR
+					   		 o.Co_Name LIKE '%".$like."%'";
+		$stmt = $this->connect()->prepare($sql);
+		$stmt->execute();
+		return $stmt->fetchAll();
 	}
 }
 

@@ -3,18 +3,11 @@ require_once('dbh.inc.php');
 class Product extends Dbh {
 		private $sid;
 		private $name;
-	function __construct($sid, $name) {
+	function __construct($sid=0, $name=null) {
 		$this->sid = $sid;
 		$this->name = $name;
 
 	}
-	protected function getProductByPartialName($pname) {
-		$sql = "SELECT p.name, p.price, p.stock FROM Product as p NATURAL JOIN  Store as s WHERE p.name LIKE '%?%' ORDER BY s.sid";
-		$stmt = $this->connect()->prepare($sql);
-		$stmt->execute([$pname]);
-		return $stmt;
-	}
-
 	public function getCoffeeProductDetails() {
 		$sql = "
 			SELECT p.SID, p.Name, p.Price, p.Stock, p.Origin, p.Expiry_Date, p.Shelving_Date, p.Product_Type, c.Bean_Type, c.Roast_Type, c.Roast_Date FROM sys.Product AS p
@@ -55,6 +48,18 @@ class Product extends Dbh {
 			$comments = $stmt->fetchAll();
 
 			return $comments;	
+	}
+
+	public function search($like) {
+		$sql = "SELECT s.Name AS store_name, 
+					   p.Name AS product_name, 
+					   p.Price AS price,
+					   s.SID AS store_id 
+					   FROM Product as p JOIN Store as s ON p.SID = s.SID 
+					   WHERE p.Name LIKE '%".$like."%' ORDER BY p.Price";
+		$stmt = $this->connect()->prepare($sql);
+		$stmt->execute();
+		return $stmt->fetchAll();
 	}
 
 	public function buy($uid, $amount) {

@@ -25,9 +25,9 @@ session_start();
 			<ul class="navbar-nav mr-auto">
 
 				<li>
-					<form class="form-inline my-2 my-lg-0" action="search.php" method="POST">
-						<input class="form-control mr-sm-2 search-bar" name="pname" type="text" placeholder="Search" aria-label="Search">
-						<select name="type" class="mr-sm-2 custom-select search-select">
+					<form class="form-inline my-2 my-lg-0" action="result.php" method="GET">
+						<input class="form-control mr-sm-2 search-bar" name="like" type="text" placeholder="Search" aria-label="Search">
+						<select name="searchType" class="mr-sm-2 custom-select search-select">
 							<option value="product">Product</option>
 							<option value="store">Store</option>
 							<option value="owner">Owner</option>
@@ -52,7 +52,7 @@ session_start();
 							</li>';
 						} else {
 							echo '
-							<a class="nav-bar-user" href="admin.php">Welcome: '.$_SESSION['account_type'].'_'.$_SESSION['user_id'].'</a>'.
+							<a class="nav-bar-user" href="owner.php">Welcome: '.$_SESSION['account_type'].'_'.$_SESSION['user_id'].'</a>'.
 							'<li class="logout-button mr-2">
 								<form action="includes/logout.inc.php" method="POST"> <button type="submit" name="submit" class="btn btn-danger">Logout</button></form>
 							</li>';
