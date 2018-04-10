@@ -136,23 +136,26 @@
    <?php
       $comments = $product->getAllComments();
       foreach ($comments as $comment): 
+         if (!empty($comment['Comment'])) {
       ?>
    <div class="card">
-      <div class="row card-content">
+      <div class="row">
          <ul class="list-group col-md-12 mb-2">
             <li class="list-group-item product-detail-row">
+               <div class="product-detail-row-title">User</div>
                <div id="commenterFirst" class="product-detail-row-value"><?=$comment['FirstName']?></div>
             </li>
-            <li class="list-group-item product-detail-row">
-               <div id="commentText" class="product-detail-row-value"><?=$comment['Comment']?></div>
+            <li class="list-group-item">
+               <div id="commentText"><?=$comment['Comment']?>
             </li>
-            <li class="list-group-item product-detail-row">
+            <li class="list-group-item product-detail-row"> 
+               <div class="product-detail-row-title">Comment Time</div>
                <div id="commentTime" class="product-detail-row-value"><?=$comment['Comment_Time']?></div>
             </li>
          </ul>
       </div>
    </div>
-   <?php endforeach;?>
+   <?php }endforeach;?>
 </div>
 </body>
 </html>

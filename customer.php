@@ -17,10 +17,6 @@ foreach($purchases as $purchase):
 			<div class="row card-content">
 				<ul class="list-group col-md-12 mb-2">
 					<li class="list-group-item product-detail-row">
-						<div class="product-detail-row-title">Store ID</div>
-						<div id="customerOrderNumber" class="product-detail-row-value"><?=$purchase['SID']?></div>
-					</li>
-					<li class="list-group-item product-detail-row">
 						<div class="product-detail-row-title">Product Name</div>
 						<div id="customerOrderNumber" class="product-detail-row-value"><?=$purchase['PName']?></div>
 					</li>
@@ -29,24 +25,48 @@ foreach($purchases as $purchase):
 						<div id="customerOrderNumber" class="product-detail-row-value"><?=$purchase['Amount']?></div>
 					</li>
 					<li class="list-group-item product-detail-row">
-						<div class="product-detail-row-title">Date</div>
+						<div class="product-detail-row-title">Purchae Date</div>
 						<div id="customerOrderNumber" class="product-detail-row-value"><?=$purchase['Purchase_Date']?></div>
 					</li>
 				</ul>
-				<form action="includes/comment.inc.php" class="list-group col-md-12" method=POST> 
-					<?php
-					echo '<input type="hidden" name="sid" value ="'.$purchase['SID'].'" />';
-  					echo '<input type="hidden" name="name" value ="'.$purchase['PName'].'" />';?>
-					<input class="list-group-item" type="Number", name="userRating", value="9"></input>
-					<input class="list-group-item" type="text", name="userComment", value="comment"></input>
-					<button class="btn btn-success w-25 mt-2 mx-auto" name="submit" type="submit">Comment</button>
-				</form>
 				<!--<form>
 					<button class="btn btn-success" data-toggle="modal" data-target="#productCommentModal">Comment</button>
 				</form>
 				-->
 			</div>
 		</div>
+		<div class="card">
+			<form action="includes/comment.inc.php" class="list-group col-md-12" method=POST> 
+					<?php
+					echo '<input type="hidden" name="sid" value ="'.$purchase['SID'].'" />';
+  					echo '<input type="hidden" name="name" value ="'.$purchase['PName'].'" />';?>
+  				<div class="row card-content">
+  					<ul class="list-group col-md-12 mb-2">
+  						<li class="list-group-item product-detail-row">
+  							<div class="product-detail-row-title">Rating</div>
+  							<div class="product-detail-row-value">
+  								<select name="userRating" class="mr-sm-2 custom-select search-select">
+							<option >9</option>
+							<option >8</option>
+							<option >7</option>
+							<option >6</option>
+							<option >5</option>
+							<option >4</option>
+							<option >3</option>
+							<option >2</option>
+							<option >1</option>
+							<option >0</option>
+						</select>
+  							</div>
+  							
+  						</li>
+  					</ul>
+  				</div>
+					<textarea class="customer-comment-box", name="userComment"></textarea>
+					<button class="btn btn-success w-25 mt-2 mx-auto" name="submit" type="submit">Comment</button>
+				</form>
+			</div>
+			<br><br>
 <?php endforeach;?>
 		<button class="btn btn-success d-inline-block" data-toggle="modal" data-target="#updateCustomerInfoModal">Update Account</button>
 	</div>
