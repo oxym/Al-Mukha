@@ -1,4 +1,16 @@
-<?php include 'includes/header.php'; ?>
+<?php include 'includes/header.php'; 
+
+if (!isset($_SESSION['user_id'])) {
+   Header("Location: 404.php");
+   exit();
+} else {
+   if ($_SESSION['account_type'] != 'owner') {
+      Header("Location: 404.php");
+   exit();
+   }
+}
+
+?>
 <div class="main-page-content">
    <button class="btn btn-success mb-2" data-toggle="modal" data-target="#updateOwnerInfoModal">Update Owner</button>
    <button class="btn btn-success mb-2" data-toggle="modal" data-target="#addStore">Add Store</button>
