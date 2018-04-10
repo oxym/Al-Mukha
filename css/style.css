@@ -116,3 +116,8 @@
 .promotion-card {
 	display: inline-block;
 }
+
+.customer-comment-box {
+	height: 120px;
+	resize: none;
+}
