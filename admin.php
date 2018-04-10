@@ -1,4 +1,14 @@
-<?php include_once 'includes/header.php'; ?>
+<?php include_once 'includes/header.php'; 
+if (!isset($_SESSION['user_id'])) {
+   Header("Location: 404.php");
+   exit();
+} else {
+   if ($_SESSION['account_type'] != 'admin') {
+      Header("Location: 404.php");
+   exit();
+   }
+}
+?>
 <div class="main-page-content">
 
    <?php 
