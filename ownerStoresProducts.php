@@ -59,7 +59,7 @@ if (!isset($_SESSION['user_id'])) {
             </li>
             <li id="roastType" class="list-group-item">
                <div class="product-detail-row-title">Roast Type</div>
-               <input name="roastTypeVal" class="roastTypeVal" class="product-detail-row-value text-right" value="<?=$row['Roast_Type']?>"></input>
+               <input name="roastTypeVal" class="product-detail-row-value text-right" value="<?=$row['Roast_Type']?>"></input>
             </li>
             <li id="roastDate" class="list-group-item">
                <div class="product-detail-row-title">Roast Date</div>
