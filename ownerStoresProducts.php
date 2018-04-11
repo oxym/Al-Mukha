@@ -31,50 +31,46 @@ if (!isset($_SESSION['user_id'])) {
             <div id="productType"><?=$row['Product_Type']?></div>
             <?= $row['Name']?>
          </div>
-         <div id="productPrice" class="col-md-4"><?= $row['Price']?></div>
+         <input name="priceVal" class="col-md-4" value="<?= $row['Price']?>"></input>
       </div>
       <div class="row card-content">
          <ul class="list-group col-md-6">
             <li class="list-group-item product-detail-row">
                <div class="product-detail-row-title">Stock</div>
-               <input class="product-detail-row-value text-right" value="<?= $row['Stock']?>"></input>
+               <input name="stockVal" class="product-detail-row-value text-right" value="<?= $row['Stock']?>"></input>
             </li>
             <li class="list-group-item">
                <div class="product-detail-row-title">Origin</div>
-               <input class="product-detail-row-value text-right" value="<?=$row['Origin']?>"></input>
+               <input name="originVal" class="product-detail-row-value text-right" value="<?=$row['Origin']?>"></input>
             </li>
             <li class="list-group-item">
                <div class="product-detail-row-title">Expiry Date</div>
-               <input class="product-detail-row-value text-right" value="<?=$row['Expiry_Date']?>"></input>
+               <input name="expiryDateVal" class="product-detail-row-value text-right" value="<?=$row['Expiry_Date']?>"></input>
             </li>
             <li class="list-group-item">
                <div class="product-detail-row-title">Shelve Date</div>
-               <input class="product-detail-row-value text-right" value="<?=$row['Shelving_Date']?>"></input>
-            </li>
-            <li class="list-group-item">
-               <div class="product-detail-row-title">Salesperson</div>
-               <input class="product-detail-row-value text-right" value="John Doe"></input>
+               <input name="shelveDateVal" class="product-detail-row-value text-right" value="<?=$row['Shelving_Date']?>"></input>
             </li>
          </ul>
          <ul class="list-group col-md-6">
             <li id="beanType" class="list-group-item">
                <div class="product-detail-row-title">Bean Type</div>
-               <input class="product-detail-row-value text-right" value="<?=$row['Bean_Type']?>"></input>
+               <input name="beanTypeVal" class="product-detail-row-value text-right" value="<?=$row['Bean_Type']?>"></input>
             </li>
             <li id="roastType" class="list-group-item">
                <div class="product-detail-row-title">Roast Type</div>
-               <input class="product-detail-row-value text-right" value="<?=$row['Roast_Type']?>"></input>
+               <input name="roastTypeVal" class="roastTypeVal" class="product-detail-row-value text-right" value="<?=$row['Roast_Type']?>"></input>
             </li>
             <li id="roastDate" class="list-group-item">
                <div class="product-detail-row-title">Roast Date</div>
-               <input class="product-detail-row-value text-right" value="<?=$row['Roast_Date']?>"></input>
+               <input name="roastDateVal" class="product-detail-row-value text-right" value="<?=$row['Roast_Date']?>"></input>
             </li>
          </ul>
       </div>
       <div class="row card-content product-save-delete">
          <input type="hidden" name="nameVal" value="<?= $row['Name']?>">
          <button type="submit" class="btn btn-danger mr-1" name="deleteProduct">Delete</button>
-         <button type="button" class="btn btn-success">Save</button>
+         <button type="submit" class="btn btn-success" name="updateCoffee">Save</button>
       </div>
    </form>
    <?php endforeach;?>
@@ -90,46 +86,42 @@ if (!isset($_SESSION['user_id'])) {
             <div><?=$row['Product_Type']?></div>
             <?= $row['Name']?>
          </div>
-         <div class="col-md-4"><?= $row['Price']?></div>
+         <div name="priceVal" class="col-md-4" value="<?= $row['Price']?>"></div>
       </div>
       <div class="row card-content">
          <ul class="list-group col-md-6">
             <li class="list-group-item product-detail-row">
                <div class="product-detail-row-title">Stock</div>
-               <input class="product-detail-row-value text-right" value="<?= $row['Stock']?>"></input>
+               <input name="stockVal" class="product-detail-row-value text-right" value="<?= $row['Stock']?>"></input>
             </li>
             <li class="list-group-item">
                <div class="product-detail-row-title">Origin</div>
-               <input class="product-detail-row-value text-right" value="<?=$row['Origin']?>"></input>
+               <input name="originVal" class="product-detail-row-value text-right" value="<?=$row['Origin']?>"></input>
             </li>
             <li class="list-group-item">
                <div class="product-detail-row-title">Expiry Date</div>
-               <input i class="product-detail-row-value text-right" value="<?=$row['Expiry_Date']?>"></input>
+               <input name="expiryDateVal" class="product-detail-row-value text-right" value="<?=$row['Expiry_Date']?>"></input>
             </li>
             <li class="list-group-item">
                <div class="product-detail-row-title">Shelve Date</div>
-               <input i class="product-detail-row-value text-right" value="<?=$row['Shelving_Date']?>"></input>
-            </li>
-            <li class="list-group-item">
-               <div class="product-detail-row-title">Salesperson</div>
-               <input id="salesperson" class="product-detail-row-value text-right" value="John Doe"></input>
+               <input name="shelveDateVal" class="product-detail-row-value text-right" value="<?=$row['Shelving_Date']?>"></input>
             </li>
          </ul>
          <ul class="list-group col-md-6">
             <li id="teaType" class="list-group-item">
                <div class="product-detail-row-title">Tea Type</div>
-               <input class="product-detail-row-value text-right" value="<?=$row['Tea_Type']?>"></input> 
+               <input name="teaTypeVal" class="product-detail-row-value text-right" value="<?=$row['Tea_Type']?>"></input> 
             </li>
             <li id="teaGrade" class="list-group-item">
                <div class="product-detail-row-title">Tea Grade</div>
-               <input class="product-detail-row-value text-right" value="<?=$row['Grade']?>"></input>
+               <input name="teaGradeVal" class="product-detail-row-value text-right" value="<?=$row['Grade']?>"></input>
             </li>
          </ul>
       </div>
       <div class="row card-content product-save-delete">
          <input type="hidden" name="nameVal" value="<?= $row['Name']?>">
          <button type="submit" class="btn btn-danger mr-1" name="deleteProduct">Delete</button>
-         <button type="button" class="btn btn-success">Save</button>
+         <button type="submit" class="btn btn-success" name="updateTea">Save</button>
       </div>
    </form>
    <?php endforeach;?>

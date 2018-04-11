@@ -178,6 +178,61 @@ class Owner extends Dbh {
 			header("Location: ../ownerStoresProducts.php?failed_to_update_store");
 		}
 	}
+
+	public function updateCoffee($Name, $Price, $Stock, $Origin, $Expiry_Date, $Shelving_Date, $Bean, $Roast, $Roast_Date) {
+		$sql = "
+			UPDATE Product
+			SET Price = ?, Stock = ?, Origin = ?, Expiry_Date = ?, Shelving_Date = ?
+			WHERE SID = ? AND Name = ?";
+
+		$stmt = $this->connect()->prepare($sql);
+		if ($stmt->execute([$Price, $Stock, $Origin, $Expiry_Date, $Shelving_Date, $_SESSION['sid'], $Name])) {
+			header("Location: ../ownerStoresProducts.php?product_updated_successfully&SID=".$_SESSION['sid']);	
+		} else {
+			header("Location: ../ownerStoresProducts.php?update_failed_product&SID=".$_SESSION['sid']);	
+		}
+
+
+		$sql = "
+			UPDATE Coffee
+			SET Bean_Type = ?, Roast_Type = ?, Roast_Date = ?
+			WHERE SID = ? AND Name = ?";
+
+		$stmt = $this->connect()->prepare($sql);
+		if ($stmt->execute([$Bean, $Roast, $Roast_Date, $_SESSION['sid'], $Name])) {
+			header("Location: ../ownerStoresProducts.php?product_updated_successfully&SID=".$_SESSION['sid']);	
+		} else {
+			header("Location: ../ownerStoresProducts.php?update_failed_coffee&SID=".$_SESSION['sid']);	
+		}
+	}
+
+
+	public function updateTea($Name, $Price, $Stock, $Origin, $Expiry_Date, $Shelving_Date, $Tea_Type, $Grade) {
+		$sql = "
+			UPDATE Product
+			SET Price = ?, Stock = ?, Origin = ?, Expiry_Date = ?, Shelving_Date = ?
+			WHERE SID = ? AND Name = ?";
+
+		$stmt = $this->connect()->prepare($sql);
+		if ($stmt->execute([$Price, $Stock, $Origin, $Expiry_Date, $Shelving_Date, $_SESSION['sid'], $Name])) {
+			header("Location: ../ownerStoresProducts.php?product_updated_successfully&SID=".$_SESSION['sid']);	
+		} else {
+			header("Location: ../ownerStoresProducts.php?update_failed_product&SID=".$_SESSION['sid']);	
+		}
+
+
+		$sql = "
+			UPDATE Tea
+			SET Tea_Type = ?, Grade = ?
+			WHERE SID = ? AND name = ?";
+
+		$stmt = $this->connect()->prepare($sql);
+		if ($stmt->execute([$Tea_Type, $Grade, $_SESSION['sid'], $Name])) {
+			header("Location: ../ownerStoresProducts.php?product_updated_successfully&SID=".$_SESSION['sid']);	
+		} else {
+			header("Location: ../ownerStoresProducts.php?update_failed_product&SID=".$_SESSION['sid']);	
+		}
+	}
 }
 
 if (isset($_POST['addTea'])) {
@@ -259,7 +314,36 @@ if (isset($_POST['updateOwnerInfoModal'])) {
 }
 
 
+if (isset($_POST['updateCoffee'])) {
+	$owner = new Owner();
 
+	$Name = $_POST['nameVal'];
+	$Stock = $_POST['stockVal'];
+	$Price = $_POST['priceVal'];
+	$Origin = $_POST['originVal'];
+	$Expiry_Date = $_POST['expiryDateVal'];
+	$Shelving_Date = $_POST['shelveDateVal'];
+	$Bean = $_POST['beanTypeVal'];
+	$Roast = $_POST['roastTypeVal'];
+	$Roast_Date = $_POST['roastDateVal'];
+
+	$owner->updateCoffee($Name, $Price, $Stock, $Origin, $Expiry_Date, $Shelving_Date, $Bean, $Roast, $Roast_Date);
+}
+
+if (isset($_POST['updateTea'])) {
+	$owner = new Owner();
+
+	$Name = $_POST['nameVal'];
+	$Stock = $_POST['stockVal'];
+	$Price = $_POST['priceVal'];
+	$Origin = $_POST['originVal'];
+	$Expiry_Date = $_POST['expiryDateVal'];
+	$Shelving_Date = $_POST['shelveDateVal'];
+	$Tea_Type = $_POST['teaTypeVal'];
+	$Grade = $_POST['teaGradeVal'];
+
+	$owner->updateTea($Name, $Price, $Stock, $Origin, $Expiry_Date, $Shelving_Date, $Tea_Type, $Grade);
+}
 
 
 

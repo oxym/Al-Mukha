@@ -12,9 +12,7 @@
 	?>
 
    <div class="main-page-content">
-   <button class="btn btn-success mb-2" data-toggle="modal" data-target="#addNewProduct">Add Product</button>
    <button class="btn btn-success mb-2" data-toggle="modal" data-target="#updateSalespersonModal">Update Profile</button>
-   <button class="btn btn-success mb-2" data-toggle="modal" data-target="#addPromotion">Add Promotion</button>
 
 	   <?php
 	      
@@ -41,11 +39,11 @@
          	<ul class="list-group col-md-6">
             	<li class="list-group-item">
                	<div class="product-detail-row-title">Description</div>
-               <input id="description" class="product-detail-row-value text-right" value="<?=$row['Description']?>"></input>
+               <div id="description" class="product-detail-row-value text-right"><?=$row['Description']?></div>
             </li>
             <li class="list-group-item">
                <div class="product-detail-row-title">Opening Date</div>
-               <input id="expiryDateVal" class="product-detail-row-value text-right" value="<?=$row['Opening_Date']?>"></input>
+               <div id="expiryDateVal" class="product-detail-row-value text-right"><?=$row['Opening_Date']?></div>
             </li>
          </ul>
       </div>
@@ -159,10 +157,6 @@
 								<li class="list-group-item">
 									<div class="product-detail-row-title">Shelve Date</div>
 									<input id="shelveDateVal" class="product-detail-row-value text-right" value=""></input>
-								</li>
-								<li class="list-group-item">
-									<div class="product-detail-row-title">Store Name</div>
-									<input id="storeName" class="product-detail-row-value text-right" value=""></input>
 								</li>
 								<li class="list-group-item">
 									<div class="product-detail-row-title">Salesperson</div>

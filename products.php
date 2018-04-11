@@ -37,10 +37,6 @@
                <div class="product-detail-row-title">Shelve Date</div>
                <input class="product-detail-row-value text-right" value="<?=$row['Shelving_Date']?>"></input>
             </li>
-            <li class="list-group-item">
-               <div class="product-detail-row-title">Salesperson</div>
-               <input class="product-detail-row-value text-right" value="John Doe"></input>
-            </li>
          </ul>
          <ul class="list-group col-md-6">
             <li id="beanType" class="list-group-item">
@@ -94,10 +90,6 @@
             <li class="list-group-item">
                <div class="product-detail-row-title">Shelve Date</div>
                <input i class="product-detail-row-value text-right" value="<?=$row['Shelving_Date']?>"></input>
-            </li>
-            <li class="list-group-item">
-               <div class="product-detail-row-title">Salesperson</div>
-               <input id="salesperson" class="product-detail-row-value text-right" value="John Doe"></input>
             </li>
          </ul>
          <ul class="list-group col-md-6">
