@@ -22,6 +22,7 @@ class Sales extends Dbh {
 		return $salesPersonStore;
 	}
 
+
 	public function getStoreCoffees($StoreId) {
 		$sql = "
 			SELECT p.SID, p.Name, p.Price, p.Stock, p.Origin, p.Expiry_Date, p.Shelving_Date, p.Product_Type, c.Bean_Type, c.Roast_Type, c.Roast_Date FROM sys.Product AS p
@@ -111,15 +112,15 @@ class Sales extends Dbh {
 
 		$sql = "
 			UPDATE sys.SalesPerson AS s
-		    SET s.Prod_Spec = ?
+		    SET s.Product_Spec = ?
 		    WHERE s.SalesPerson_Id = ? ";
 
 		$stmt = $this->connect()->prepare($sql);
 
 		if($stmt->execute([$Spec, $_SESSION['user_id']])) {
-			header("Location: ../salesPersonStoreProducts.php?store-updated&SID=".$_SESSION['sid']);
+			header("Location: ../salesPersonStoreProducts.php?sales-updated&SID=".$_SESSION['user_id']);
 		} else {
-			header("Location: ../salesPersonStoreProducts.php?failed_to_update_store");
+			header("Location: ../salesPersonStoreProducts.php?failed_to_update_sales");
 		}
 	}
 
@@ -237,12 +238,12 @@ if (isset($_POST['addPromotion'])) {
 	$owner->addPromotion($Promo_Code, $Start_Date, $End_Date, $Percent_Off);
 }
 
-if (isset($_POST['updateOwnerInfoModal'])) {
-	$owner = new Sales();
+if (isset($_POST['updateSaleInfoModal'])) {
+	$sales = new Sales();
 
-	$Name = $_POST['companyName'];
+	$Name = $_POST['specialization'];
 
-	$owner->upDateStore($Name);
+	$sales->upDateSales($Name);
 }
 
 if (isset($_POST['deleteProduct'])) {
