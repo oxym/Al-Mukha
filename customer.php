@@ -25,7 +25,7 @@ foreach($purchases as $purchase):
 						<div id="customerOrderNumber" class="product-detail-row-value"><?=$purchase['Amount']?></div>
 					</li>
 					<li class="list-group-item product-detail-row">
-						<div class="product-detail-row-title">Purchae Date</div>
+						<div class="product-detail-row-title">Purchase Date</div>
 						<div id="customerOrderNumber" class="product-detail-row-value"><?=$purchase['Purchase_Date']?></div>
 					</li>
 				</ul>

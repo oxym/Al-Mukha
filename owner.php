@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_id'])) {
 
 ?>
 <div class="main-page-content">
-   <button class="btn btn-success mb-2" data-toggle="modal" data-target="#updateOwnerInfoModal">Update Owner</button>
+   
    <button class="btn btn-success mb-2" data-toggle="modal" data-target="#addStore">Add Store</button>
    <?php 
       include 'includes/owner.inc.php';
@@ -56,33 +56,7 @@ if (!isset($_SESSION['user_id'])) {
       </div>
    </form>
    <?php endforeach;?>
-   <!-- Modal for profile update -->
-   <div class="modal fade" id="updateOwnerInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-         <div class="modal-content">
-            <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">Update Owner Account</h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">&times;</span>
-               </button>
-            </div>
-            <div class="modal-body">
-               <div class="row">
-                  <ul class="list-group col-md-12 ml-2">
-                     <li class="list-group-item">
-                        <div class="product-detail-row-title">Company Name</div>
-                        <input id="companyName" class="product-detail-row-value text-right" value="Best Coffee Shop"></input>
-                     </li>
-                  </ul>
-               </div>
-            </div>
-            <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-               <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-         </div>
-      </div>
-   </div>
+   
    <!-- Modal for adding store -->
    <div class="modal fade" id="addStore" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">

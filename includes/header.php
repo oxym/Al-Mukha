@@ -50,7 +50,16 @@ session_start();
 							'<li class="logout-button mr-2">
 								<form action="includes/logout.inc.php" method="POST"> <button type="submit" name="submit" class="btn btn-danger">Logout</button></form>
 							</li>';
-						} else {
+						} 
+
+						else if ($_SESSION['account_type'] == 'sales') {
+							echo '
+							<a class="nav-bar-user" href="salesperson.php">Welcome: '.$_SESSION['account_type'].'_'.$_SESSION['user_id'].'</a>'.
+							'<li class="logout-button mr-2">
+								<form action="includes/logout.inc.php" method="POST"> <button type="submit" name="submit" class="btn btn-danger">Logout</button></form>
+							</li>';
+						}
+						else {
 							echo '
 							<a class="nav-bar-user" href="owner.php">Welcome: '.$_SESSION['account_type'].'_'.$_SESSION['user_id'].'</a>'.
 							'<li class="logout-button mr-2">

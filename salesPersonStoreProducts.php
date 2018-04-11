@@ -11,21 +11,20 @@ if (!isset($_SESSION['user_id'])) {
 }
 ?>
 <div class="main-page-content">
-   <button class="btn btn-success mb-2" data-toggle="modal" data-target="#updateOwnerInfoModal">Update Store Name</button>
    <button class="btn btn-success mb-2" data-toggle="modal" data-target="#addNewProduct">Add Product</button>
    <button class="btn btn-success mb-2" data-toggle="modal" data-target="#addPromotion">Add Promotion</button>
 
    <?php
       $_SESSION['sid'] = $_GET['SID'];
       
-      include 'includes/owner.inc.php';
+      include 'includes/salesPerson.inc.php';
       
-      $owner = new Owner();      
-      $storeCoffees = $owner->getStoreCoffees($_GET['SID']);
+      $sales = new Sales();      
+      $storeCoffees = $sales->getStoreCoffees($_GET['SID']);
       
       foreach($storeCoffees as $row):
       ?>
-   <form class="card" action="includes/owner.inc.php" method="POST">
+   <form class="card" action="includes/salesPerson.inc.php" method="POST">
       <div class="card-title">
          <div id="productTitle">
             <div id="productType"><?=$row['Product_Type']?></div>
@@ -80,11 +79,11 @@ if (!isset($_SESSION['user_id'])) {
    <?php endforeach;?>
 
    <?php
-      $storeTeas = $owner->getStoreTeas($_GET['SID']);
+      $storeTeas = $sales->getStoreTeas($_GET['SID']);
       
       foreach($storeTeas as $row):
       ?>
-   <form class="card" class="card" action="includes/owner.inc.php" method="POST">
+   <form class="card" class="card" action="includes/salesPerson.inc.php" method="POST">
       <div class="card-title">
          <div id="productTitle">
             <div><?=$row['Product_Type']?></div>
@@ -134,7 +133,35 @@ if (!isset($_SESSION['user_id'])) {
    </form>
    <?php endforeach;?>
 
-
+   <!-- Modal for profile update -->
+   <div class="modal fade" id="updateSaleInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+         <div class="modal-content">
+            <form class="modal-content" action="includes/salesPerson.inc.php" method="POST">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Update Sales Account</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <div class="row">
+                     <ul class="list-group col-md-12 ml-2">
+                        <li class="list-group-item">
+                           <div class="product-detail-row-title">Specialization</div>
+                           <input name="specialization" class="product-detail-row-value text-right" value=""></input>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="summit" name= "updateSaleInfoModal" class="btn btn-primary">Save changes</button>
+               </div>
+            </form>   
+         </div>
+      </div>
+   </div>
 
 
     <!-- Modal for adding Promotion -->
@@ -174,36 +201,6 @@ if (!isset($_SESSION['user_id'])) {
                <button type="submit" name="addPromotion" class="btn btn-primary">Add Promotion</button>
             </div>
          </form>
-      </div>
-   </div>
-
-   <!-- Modal for profile update -->
-   <div class="modal fade" id="updateOwnerInfoModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-         <div class="modal-content">
-            <form class="modal-content" action="includes/owner.inc.php" method="POST">
-               <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Update Owner Account</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                  </button>
-               </div>
-               <div class="modal-body">
-                  <div class="row">
-                     <ul class="list-group col-md-12 ml-2">
-                        <li class="list-group-item">
-                           <div class="product-detail-row-title">Company Name</div>
-                           <input name="companyName" class="product-detail-row-value text-right" value=""></input>
-                        </li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="summit" name= "updateOwnerInfoModal" class="btn btn-primary">Save changes</button>
-               </div>
-            </form>   
-         </div>
       </div>
    </div>
 

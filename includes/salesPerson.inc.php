@@ -5,7 +5,23 @@ if(!isset($_SESSION))
     
 } 
 require_once('dbh.inc.php');
-class Owner extends Dbh {
+class Sales extends Dbh {
+
+
+	public function getSalespersonStore($Sales) {
+		$sql = "
+			SELECT * FROM sys.Store AS st
+			NATURAL JOIN sys.SalesPerson AS sa
+			WHERE st.SID = sa.SID AND sa.SalesPerson_Id = ?";
+
+		$stmt = $this->connect()->prepare($sql);
+		$stmt->execute([$Sales]);
+
+		$salesPersonStore = $stmt->fetchAll();
+
+		return $salesPersonStore;
+	}
+
 	public function getStoreCoffees($StoreId) {
 		$sql = "
 			SELECT p.SID, p.Name, p.Price, p.Stock, p.Origin, p.Expiry_Date, p.Shelving_Date, p.Product_Type, c.Bean_Type, c.Roast_Type, c.Roast_Date FROM sys.Product AS p
@@ -76,63 +92,6 @@ class Owner extends Dbh {
 		}
 	}
 
-	public function addStore($Name, $Description, $Opening_Date) {
-
-		$num_of_rows = 1;
-		$sid;
-
-		while ($num_of_rows > 0) {
-			$sid = mt_rand(pow(10,8),pow(10,9)-1);
-			$sql = "SELECT * FROM Store WHERE SID = ?";
-			$result = $this->connect()->prepare($sql);
-			$result->execute([$sid]);
-			$num_of_rows = (int) $result -> fetchColumn();
-		}
-
-		$sql = "INSERT INTO Store (SID, Name, Description, Own_ID, Opening_Date) VALUES (?, ?, ?, ?, ?)";
-		$stmt = $this->connect()->prepare($sql);
-
-		if ($stmt->execute([$sid, $Name, $Description, $_SESSION['user_id'], $Opening_Date])) {
-			header("Location: ../owner.php?Store-added");
-		} else {
-			header("Location: ../owner.php?Store-add-failed");
-		}
-	}
-
-	public function getOwnersStores($Own_ID) {
-		$sql = "SELECT * FROM Store s WHERE s.Own_ID = ?";
-		$stmt = $this->connect()->prepare($sql);
-		$stmt->execute([$Own_ID]);
-		$ownersStores = $stmt->fetchAll();
-
-		return $ownersStores;
-	}
-
-	public function getSalespersonStore($Sales) {
-		$sql = "
-			SELECT * FROM sys.Store AS st
-			NATURAL JOIN sys.SalesPerson AS sa
-			WHERE st.SID = sa.SID AND sa.SalesPerson_Id = ?";
-
-		$stmt = $this->connect()->prepare($sql);
-		$stmt->execute([$Sales]);
-
-		$salesPersonStore = $stmt->fetchAll();
-
-		return $salesPersonStore;
-	}
-
-	public function deleteStore($SID) {
-		$sql = "DELETE FROM sys.Store WHERE SID = ?";
-			
-		$stmt = $this->connect()->prepare($sql);
-		
-		if ($stmt->execute([$SID])) {
-			header("Location: ../owner.php?Store_deleted");
-		} else {
-			header("Location: ../owner.php?Store_delete_FAILED");
-		}
-	}
 
 	public function deleteProduct($Name) {
 		$sql = "
@@ -148,6 +107,23 @@ class Owner extends Dbh {
 		}
 	}
 
+	public function upDateSales($Spec){
+
+		$sql = "
+			UPDATE sys.SalesPerson AS s
+		    SET s.Prod_Spec = ?
+		    WHERE s.SalesPerson_Id = ? ";
+
+		$stmt = $this->connect()->prepare($sql);
+
+		if($stmt->execute([$Spec, $_SESSION['user_id']])) {
+			header("Location: ../ownerStoresProducts.php?store-updated&SID=".$_SESSION['sid']);
+		} else {
+			header("Location: ../ownerStoresProducts.php?failed_to_update_store");
+		}
+	}
+}
+
 	public function search($like) {
 		$sql = "SELECT s.Name AS store_name,
 					   s.SID AS store_id,
@@ -161,22 +137,6 @@ class Owner extends Dbh {
 		$stmt = $this->connect()->prepare($sql);
 		$stmt->execute();
 		return $stmt->fetchAll();
-	}
-
-	public function upDateStore($Name){
-
-		$sql = "
-			UPDATE sys.Store AS s
-		    SET s.Name = ?
-		    WHERE s.SID = ? ";
-
-		$stmt = $this->connect()->prepare($sql);
-
-		if($stmt->execute([$Name, $_SESSION['sid']])) {
-			header("Location: ../ownerStoresProducts.php?store-updated&SID=".$_SESSION['sid']);
-		} else {
-			header("Location: ../ownerStoresProducts.php?failed_to_update_store");
-		}
 	}
 }
 
@@ -223,33 +183,6 @@ if (isset($_POST['addPromotion'])) {
 	$owner->addPromotion($Promo_Code, $Start_Date, $End_Date, $Percent_Off);
 }
 
-if (isset($_POST['addStore'])) {
-	$owner = new Owner();
-
-	$Name = $_POST['storeName'];
-	$Description = $_POST['storeDescription'];
-	$Opening_Date = $_POST['storeOpeningDate'];
-
-	$owner->addStore($Name, $Description, $Opening_Date);
-}
-
-if (isset($_POST['deleteStore'])) {
-	$owner = new Owner();
-
-	$storeID = $_POST['storeID'];
-
-	$owner->deleteStore($storeID);
-}
-
-
-if (isset($_POST['deleteProduct'])) {
-	$owner = new Owner();
-
-	$Name = $_POST['nameVal'];
-
-	$owner->deleteProduct($Name);
-}
-
 if (isset($_POST['updateOwnerInfoModal'])) {
 	$owner = new Owner();
 
@@ -258,8 +191,10 @@ if (isset($_POST['updateOwnerInfoModal'])) {
 	$owner->upDateStore($Name);
 }
 
+if (isset($_POST['deleteProduct'])) {
+	$owner = new Owner();
 
+	$Name = $_POST['nameVal'];
 
-
-
-
+	$owner->deleteProduct($Name);
+}
