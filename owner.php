@@ -4,9 +4,11 @@ if (!isset($_SESSION['user_id'])) {
    Header("Location: 404.php");
    exit();
 } else {
-   if ($_SESSION['account_type'] != 'owner') {
+   if ($_SESSION['account_type'] == 'owner' || $_SESSION['account_type'] == 'admin') {
+
+   } else {
       Header("Location: 404.php");
-   exit();
+      exit();      
    }
 }
 

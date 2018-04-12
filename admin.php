@@ -32,11 +32,11 @@ if (!isset($_SESSION['user_id'])) {
          <ul class="list-group col-md-6">
             <li class="list-group-item">
                <div class="product-detail-row-title">Description</div>
-               <input id="description" class="product-detail-row-value text-right" value="<?=$row['Description']?>"></input>
+               <div id="description" class="product-detail-row-value text-right"><?=$row['Description']?></div>
             </li>
             <li class="list-group-item">
                <div class="product-detail-row-title">Opening Date</div>
-               <input id="expiryDateVal" class="product-detail-row-value text-right" value="<?=$row['Opening_Date']?>"></input>
+               <div id="expiryDateVal" class="product-detail-row-value text-right"><?=$row['Opening_Date']?></div>
             </li>
          </ul>
       </div>
@@ -44,7 +44,6 @@ if (!isset($_SESSION['user_id'])) {
          <a class="btn btn-success mr-1" href="ownerStoresProducts.php?SID=<?=$row['SID']?>">View Products</a>
          <input type="hidden" name="storeID" value="<?=$row['SID']?>">
          <button type="submit" class="btn btn-danger mr-1" name="deleteStore">Delete</button>
-         <button type="button" class="btn btn-success">Save</button>
       </div>
    </form>
    <?php endforeach;?>
